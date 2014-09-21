@@ -1,0 +1,78 @@
+<Customer>
+  <type>G</type>
+  <customerCode>C001</customerCode>
+  <name>University of Nebraska-Lincoln</name>
+  <address>
+    <Street>259 Avery Hall</Street>
+    <City>Lincoln</City>
+    <State>NE</State>
+    <Zip>68588-0115</Zip>
+    <Country>USA</Country>
+  </address>
+  <primaryContact>231</primaryContact>
+</Customer>
+<Customer>
+  <type>C</type>
+  <customerCode>C002</customerCode>
+  <name>Stark Industries</name>
+  <address>
+    <Street>184 Marvel Way</Street>
+    <City>New York</City>
+    <State>NY</State>
+    <Zip>10453</Zip>
+    <Country>USA</Country>
+  </address>
+  <primaryContact>944c</primaryContact>
+</Customer>
+<Customer>
+  <type>C</type>
+  <customerCode>C003</customerCode>
+  <name>Venture Industries</name>
+  <address>
+    <Street>123 Venture Way</Street>
+    <City>Culver City</City>
+    <State>CA</State>
+    <Zip>90230</Zip>
+    <Country>USA</Country>
+  </address>
+  <primaryContact>306a</primaryContact>
+</Customer>
+<Customer>
+  <type>G</type>
+  <customerCode>C004</customerCode>
+  <name>National Security Administration</name>
+  <address>
+    <Street>9800 Savage Rd</Street>
+    <City>Fort Meade</City>
+    <State>MD</State>
+    <Zip>20755</Zip>
+    <Country>USA</Country>
+  </address>
+  <primaryContact>321f</primaryContact>
+</Customer>
+<Customer>
+  <type>C</type>
+  <customerCode>C005</customerCode>
+  <name>Vandelay Industries</name>
+  <address>
+    <Street>1060 West Addison</Street>
+    <City>Chicago</City>
+    <State>IL</State>
+    <Zip>60601</Zip>
+    <Country>USA</Country>
+  </address>
+  <primaryContact>bbchar</primaryContact>
+</Customer>
+<Customer>
+  <type>C</type>
+  <customerCode>C006</customerCode>
+  <name>Mr. Smith&apos;s #1 Supply Co. Inc.</name>
+  <address>
+    <Street>456 West 7th St.</Street>
+    <City>Omaha</City>
+    <State>NE</State>
+    <Zip>68500</Zip>
+    <Country>USA</Country>
+  </address>
+  <primaryContact> 321dr</primaryContact>
+</Customer>

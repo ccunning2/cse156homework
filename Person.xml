@@ -1,0 +1,315 @@
+<Person>
+  <personCode>944c</personCode>
+  <firstName> Starlin</firstName>
+  <lastName>Castro</lastName>
+  <address>
+    <Street>1060 West Addison Street</Street>
+    <City>Chicago</City>
+    <State>IL</State>
+    <Zip>60613</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>scastro@cubs.com</string>
+    <string>starlin_castro13@gmail.com</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>306a</personCode>
+  <firstName> Brock</firstName>
+  <lastName>Sampson</lastName>
+  <address>
+    <Street>123 N 1st Street</Street>
+    <City>Omaha</City>
+    <State>NE</State>
+    <Zip>68116</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>brock_f_sampson@gmail.com</string>
+    <string>bsampson@venture.com</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>55bb</personCode>
+  <firstName> Miles</firstName>
+  <lastName>O&apos;Brien</lastName>
+  <address>
+    <Street>8753 West 3rd Ave.</Street>
+    <City>Dallas</City>
+    <State>TX</State>
+    <Zip>75001</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>obrien@ds9.com</string>
+    <string>obrien@enterprise.gov</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>2342</personCode>
+  <firstName> Miles</firstName>
+  <lastName>O&apos;Brien</lastName>
+  <address>
+    <Street>123 Friendly Street</Street>
+    <City>Ottawa</City>
+    <State>ON</State>
+    <Zip>K1A 0G9</Zip>
+    <Country>Canada</Country>
+  </address>
+  <emails>
+    <string>No Email</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>aef1</personCode>
+  <firstName> Gordon</firstName>
+  <lastName>Gekko</lastName>
+  <address>
+    <Street>1 Wall Street</Street>
+    <City>New York</City>
+    <State>NY</State>
+    <Zip>10005-0012</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>No Email</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>321f</personCode>
+  <firstName> Bud</firstName>
+  <lastName>Fox</lastName>
+  <address>
+    <Street>321 Bronx Street</Street>
+    <City>New York</City>
+    <State>NY</State>
+    <Zip>10004</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>bfox@gmail.com</string>
+    <string>csheen@crazy.net</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>ma12</personCode>
+  <firstName> Dale</firstName>
+  <lastName>Sveum</lastName>
+  <address>
+    <Street>1060 West Addison Street</Street>
+    <City>Chicago</City>
+    <State>IL</State>
+    <Zip>60613</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>sveum@cubs.com</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>321nd</personCode>
+  <firstName> William</firstName>
+  <lastName>Hartnell</lastName>
+  <address>
+    <Street>1060 West Addison Street</Street>
+    <City>Chicago</City>
+    <State>IL</State>
+    <Zip>60613</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>whartnell@doctors.com</string>
+    <string>dr@who.com</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>nf32a</personCode>
+  <firstName> Patrick</firstName>
+  <lastName>Troughton</lastName>
+  <address>
+    <Street>1060 West Addison Street</Street>
+    <City>Chicago</City>
+    <State>IL</State>
+    <Zip>60613</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>ptroug@cse.unl.edu</string>
+    <string>ptrou32@unl.edu</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>321na</personCode>
+  <firstName> Jon</firstName>
+  <lastName>Pertwee</lastName>
+  <address>
+    <Street>301 Front St W</Street>
+    <City> Toronto</City>
+    <State> ON</State>
+    <Zip> M5V 2T6</Zip>
+    <Country> Canada</Country>
+  </address>
+  <emails>
+    <string>jpet@whofan.com</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>231</personCode>
+  <firstName>Tom</firstName>
+  <lastName>Baker</lastName>
+  <address>
+    <Street>1 Blue Jays Way</Street>
+    <City> Toronto</City>
+    <State> ON</State>
+    <Zip> M5V 1J1</Zip>
+    <Country> Canada</Country>
+  </address>
+  <emails>
+    <string>famousdoc@who.com</string>
+    <string>tbaker@cse.unl.edu</string>
+    <string>mostfamous@whovian.com</string>
+    <string>thedoctor@bbc.com</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>6doc</personCode>
+  <firstName> Richard</firstName>
+  <lastName>Hurndall</lastName>
+  <address>
+    <Street>Campos El290</Street>
+    <City>Mexico City</City>
+    <State> FD</State>
+    <Zip></Zip>
+    <Country> Mexico</Country>
+  </address>
+  <emails>
+    <string>rhurndall@cse.unl.edu</string>
+    <string>richard@unl.edu</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>321dr</personCode>
+  <firstName> C.</firstName>
+  <lastName>Baker</lastName>
+  <address>
+    <Street>Avery Hall</Street>
+    <City>Lincoln</City>
+    <State>NE</State>
+    <Zip>68503</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>dr@baker.com</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>1svndr</personCode>
+  <firstName>Sylvester</firstName>
+  <lastName>McCoy</lastName>
+  <address>
+    <Street>126-01 Roosevelt Ave</Street>
+    <City> Flushing</City>
+    <State> NY</State>
+    <Zip>11368</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>slyguy@hotmail.com</string>
+    <string>mccoy@whofan.com</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>123lst</personCode>
+  <firstName> Paul</firstName>
+  <lastName>McGann</lastName>
+  <address>
+    <Street>1 MetLife Stadium Dr</Street>
+    <City> East Rutherford</City>
+    <State> NJ</State>
+    <Zip>07073</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>pmcgann@mlb.com</string>
+    <string>foo@bar.com</string>
+    <string>pmc@unl.edu</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>nwdoc1</personCode>
+  <firstName> Chris</firstName>
+  <lastName>Eccleston</lastName>
+  <address>
+    <Street>1 E 161st St</Street>
+    <City> Bronx</City>
+    <State> NY</State>
+    <Zip>10451</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>newguy@whovian.com</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>2ndbestd</personCode>
+  <firstName> David</firstName>
+  <lastName>Tennant</lastName>
+  <address>
+    <Street>700 E Grand Ave</Street>
+    <City> Chicago</City>
+    <State> IL</State>
+    <Zip> 60611</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>actor@shakespeare.com</string>
+    <string>tdavid@unl.edu</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>wrddoc</personCode>
+  <firstName> Matt</firstName>
+  <lastName>Smith</lastName>
+  <address>
+    <Street>333 W 35th St</Street>
+    <City> Chicago</City>
+    <State> IL</State>
+    <Zip>60616</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>msmith@who.com</string>
+    <string>thedoc@cse.unl.edu</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>bbchar</personCode>
+  <firstName> Kaylee</firstName>
+  <lastName>Ehrmantraut</lastName>
+  <address>
+    <Street>800 West 7th Street</Street>
+    <City> Albuquerque</City>
+    <State> NM</State>
+    <Zip> 87105</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>No Email</string>
+  </emails>
+</Person>
+<Person>
+  <personCode>doc05</personCode>
+  <firstName> Peter</firstName>
+  <lastName>Davison</lastName>
+  <address>
+    <Street>123 Cabo San Lucas</Street>
+    <City> Los Cabos</City>
+    <State> BCS</State>
+    <Zip> </Zip>
+    <Country> Mexico</Country>
+  </address>
+  <emails>
+    <string>No Email</string>
+  </emails>
+</Person>
