@@ -5,7 +5,7 @@ import com.thoughtworks.xstream.XStream;
 //This will read .dat files, parse, create objects, and convert to XML/JSON
 public class DataConverter {
 
-	//Reads the customers.dat file
+	//Reads the Persons.dat file
 	public static Person[] readPersons() {
 		
 		try {
@@ -74,17 +74,55 @@ public class DataConverter {
 		
 		
 	}
+	
+	public static Product[] readProducts(){
+		try {
+			Scanner	s = new Scanner(new FileReader("data/Products.dat"));
+			
+			int count = s.nextInt(); //Number of entries. 
+			Product[] products = new Product[count]; //Array to hold products
+			s.nextLine(); //Advance scanner to next line
+			int iterator = 0; //Used to iterate in array creation
+			while (s.hasNext()) {
+				String inLine = s.nextLine(); //Make a string out of the next line
+				String [] info;
+				info = inLine.split(";"); //Makes an array of of the string, delimited by ';'
+				if (info[1].equalsIgnoreCase("E")){
+					products[iterator] = new Equipment(info[0], info[2], Double.parseDouble(info[3]));
+				} else if (info[1].equalsIgnoreCase("L")) {
+					products[iterator] = new License(info[0], info[2],Double.parseDouble(info[3]), Double.parseDouble(info[4]));
+				} else if (info[1].equalsIgnoreCase("C")) {
+					products[iterator] = new Consultation(info[0], info[2], info[3], Double.parseDouble(info[4]) );
+				} else {
+					products[iterator] = new Product();
+				}
+			
+				iterator++;
+			} //End while
+			s.close();
+			return products;
+
+			} catch (FileNotFoundException e) {
+				System.out.println("File not found exception in readProducts");
+			}
+			return null;
+	}
 	public static void writeXML(Object[] objects) {
 		XStream xstream = new XStream();
-//		String xml = xstream.toXML(objects[0]);
-		String objType = objects[0].getClass().getCanonicalName(); //Returns the name of objects we are using with
+		String objType;
+
+		if (!objects.getClass().getCanonicalName().equalsIgnoreCase("Product[]")) {
+		objType = objects[0].getClass().getCanonicalName() + "s";
+		} else {
+		 objType = "Products";  //This is just to deal with automatically naming the output
+		}
+		//Returns the name of objects we are using with
 		String filename = objType + ".xml"; //Filename for output
 		File file = new File(filename);
 		try {
 			file.createNewFile();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Error in writeXML IOException");
 		}
 		try {
 			PrintWriter writer = new PrintWriter(filename);
@@ -93,8 +131,7 @@ public class DataConverter {
 				writer.println();
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Error in writeXML File Not Found Exception");
 		}
 		
 		
@@ -109,6 +146,8 @@ public class DataConverter {
 		writeXML(peeps);
 		Customer[] customers = readCustomers();
 		writeXML(customers);
+		Product[] products = readProducts();
+		writeXML(products);
 		
 
 	}
