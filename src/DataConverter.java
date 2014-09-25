@@ -126,6 +126,7 @@ public class DataConverter {
 		}
 		try {
 			PrintWriter writer = new PrintWriter(filename);
+			writer.println("<?xml version=\"1.0\"?>"+"\n");
 			for (Object o : objects) {
 				xstream.toXML(o, writer);
 				writer.println();
