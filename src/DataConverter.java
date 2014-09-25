@@ -1,7 +1,8 @@
 import java.io.*;
 import java.util.Scanner;
 
-import com.thoughtworks.xstream.XStream;  
+import com.thoughtworks.xstream.*;  
+import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 //This will read .dat files, parse, create objects, and convert to XML/JSON
 public class DataConverter {
 
@@ -140,14 +141,59 @@ public class DataConverter {
 
 	}
 	
+	public static void writeJSON(Object[] objects) {
+		XStream xstream = new XStream(new JsonHierarchicalStreamDriver());
+		xstream.setMode(XStream.NO_REFERENCES);
+		xstream.alias("License", License.class);
+		xstream.alias("Person", Person.class);
+		xstream.alias("Address", Address.class);
+		xstream.alias("Customer", Customer.class);
+		xstream.alias("Consultation", Consultation.class);
+		xstream.alias("Product", Product.class);
+		xstream.alias("Equipment", Equipment.class);
+		String objType;
+
+		if (!objects.getClass().getCanonicalName().equalsIgnoreCase("Product[]")) {
+		objType = objects[0].getClass().getCanonicalName() + "s";
+		} else {
+		 objType = "Products";  //This is just to deal with automatically naming the output
+		}
+		//Returns the name of objects we are using with
+		String filename = objType + ".json"; //Filename for output
+		File file = new File(filename);
+		try {
+			file.createNewFile();
+		} catch (IOException e) {
+			System.out.println("Error in writeJSON IOException");
+		}
+		try {
+			PrintWriter writer = new PrintWriter(filename);
+//			writer.println("<?xml version=\"1.0\"?>"+"\n");
+			for (Object o : objects) {
+				xstream.toXML(o, writer);
+				writer.println();
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Error in writeJSON File Not Found Exception");
+		}
+		
+		
+		
+
+	}
+	
+	
 	public static void main(String[] args) {
 		
 		//This is just code to test out what has been done so far
 		Person[] peeps = readPersons();
 		writeXML(peeps);
+		writeJSON(peeps);
 		Customer[] customers = readCustomers();
 		writeXML(customers);
+		writeJSON(customers);
 		Product[] products = readProducts();
+		writeJSON(products);
 		writeXML(products);
 		
 
