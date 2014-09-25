@@ -1,0 +1,56 @@
+{"Equipment": {
+  "name": "b29e",
+  "code": "Cinco MIDI Organizer",
+  "pricePerUnit": 2500.0
+}}
+{"Equipment": {
+  "name": "ff23",
+  "code": "Cinco-Fone",
+  "pricePerUnit": 124.99
+}}
+{"Equipment": {
+  "name": "fp12",
+  "code": "Internette Discs",
+  "pricePerUnit": 14.99
+}}
+{"Equipment": {
+  "name": "1239",
+  "code": "Cinco Video Cube Playback System",
+  "pricePerUnit": 5000.0
+}}
+{"License": {
+  "name": "90fa",
+  "code": "Cinco Long Distance Service",
+  "annualLicenseFee": 2000.0,
+  "serviceFee": 12000.0
+}}
+{"Consultation": {
+  "name": "Cinco-Fone Training",
+  "code": "3289",
+  "hourlyFee": 25.0,
+  "consultantPersonCode": "aef1"
+}}
+{"Consultation": {
+  "name": "Server System Setup",
+  "code": "782g",
+  "hourlyFee": 150.0,
+  "consultantPersonCode": "321nd"
+}}
+{"License": {
+  "name": "3294",
+  "code": "Cloud SQL Hosting",
+  "annualLicenseFee": 0.0,
+  "serviceFee": 35000.0
+}}
+{"License": {
+  "name": "3295",
+  "code": "Domain registration",
+  "annualLicenseFee": 350.0,
+  "serviceFee": 1200.0
+}}
+{"Consultation": {
+  "name": "Java Training",
+  "code": "7589",
+  "hourlyFee": 2500.0,
+  "consultantPersonCode": " 900.00"
+}}

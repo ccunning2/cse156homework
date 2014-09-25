@@ -1,0 +1,104 @@
+{"Customer": {
+  "type": "G",
+  "customerCode": "C001",
+  "name": "University of Nebraska-Lincoln",
+  "address": {
+    "Street": "259 Avery Hall",
+    "City": "Lincoln",
+    "State": "NE",
+    "Zip": "68588-0115",
+    "Country": "USA"
+  },
+  "primaryContact": "231"
+}}
+{"Customer": {
+  "type": "C",
+  "customerCode": "C002",
+  "name": "Stark Industries",
+  "address": {
+    "Street": "184 Marvel Way",
+    "City": "New York",
+    "State": "NY",
+    "Zip": "10453",
+    "Country": "USA"
+  },
+  "primaryContact": "944c"
+}}
+{"Customer": {
+  "type": "C",
+  "customerCode": "C003",
+  "name": "Venture Industries",
+  "address": {
+    "Street": "123 Venture Way",
+    "City": "Culver City",
+    "State": "CA",
+    "Zip": "90230",
+    "Country": "USA"
+  },
+  "primaryContact": "306a"
+}}
+{"Customer": {
+  "type": "G",
+  "customerCode": "C004",
+  "name": "National Security Administration",
+  "address": {
+    "Street": "9800 Savage Rd",
+    "City": "Fort Meade",
+    "State": "MD",
+    "Zip": "20755",
+    "Country": "USA"
+  },
+  "primaryContact": "321f"
+}}
+{"Customer": {
+  "type": "C",
+  "customerCode": "C005",
+  "name": "Vandelay Industries",
+  "address": {
+    "Street": "1060 West Addison",
+    "City": "Chicago",
+    "State": "IL",
+    "Zip": "60601",
+    "Country": "USA"
+  },
+  "primaryContact": "bbchar"
+}}
+{"Customer": {
+  "type": "C",
+  "customerCode": "C006",
+  "name": "Mr. Smith's #1 Supply Co. Inc.",
+  "address": {
+    "Street": "456 West 7th St.",
+    "City": "Omaha",
+    "State": "NE",
+    "Zip": "68500",
+    "Country": "USA"
+  },
+  "primaryContact": " 321dr"
+}}
+{"Customer": {
+  "type": "G",
+  "customerCode": "C007",
+  "name": "Umbrella Corp",
+  "address": {
+    "Street": "542 Smith Ave.",
+    "City": "Atlanta",
+    "State": "GA",
+    "Zip": "56432",
+    "Country": "USA"
+  },
+  "primaryContact": "675"
+}}
+{"Customer": {
+  "type": "C",
+  "customerCode": "C008",
+  "name": "Coke Company",
+  "address": {
+    "Street": "231 North Street",
+    "City": "San Francisco",
+    "State": "CA",
+    "Zip": "95054",
+    "Country": "USA"
+  },
+  "primaryContact": "234"
+}}
