@@ -9,7 +9,24 @@
     "Zip": "68588-0115",
     "Country": "USA"
   },
-  "primaryContact": "231"
+  "primaryContact": {
+    "personCode": "231",
+    "firstName": "Tom",
+    "lastName": "Baker",
+    "address": {
+      "Street": "1 Blue Jays Way",
+      "City": " Toronto",
+      "State": " ON",
+      "Zip": " M5V 1J1",
+      "Country": " Canada"
+    },
+    "emails": [
+      "famousdoc@who.com",
+      "tbaker@cse.unl.edu",
+      "mostfamous@whovian.com",
+      "thedoctor@bbc.com"
+    ]
+  }
 }}
 {"Customer": {
   "type": "C",
@@ -22,7 +39,22 @@
     "Zip": "10453",
     "Country": "USA"
   },
-  "primaryContact": "944c"
+  "primaryContact": {
+    "personCode": "944c",
+    "firstName": " Starlin",
+    "lastName": "Castro",
+    "address": {
+      "Street": "1060 West Addison Street",
+      "City": "Chicago",
+      "State": "IL",
+      "Zip": "60613",
+      "Country": "USA"
+    },
+    "emails": [
+      "scastro@cubs.com",
+      "starlin_castro13@gmail.com"
+    ]
+  }
 }}
 {"Customer": {
   "type": "C",
@@ -35,7 +67,22 @@
     "Zip": "90230",
     "Country": "USA"
   },
-  "primaryContact": "306a"
+  "primaryContact": {
+    "personCode": "306a",
+    "firstName": " Brock",
+    "lastName": "Sampson",
+    "address": {
+      "Street": "123 N 1st Street",
+      "City": "Omaha",
+      "State": "NE",
+      "Zip": "68116",
+      "Country": "USA"
+    },
+    "emails": [
+      "brock_f_sampson@gmail.com",
+      "bsampson@venture.com"
+    ]
+  }
 }}
 {"Customer": {
   "type": "G",
@@ -48,7 +95,22 @@
     "Zip": "20755",
     "Country": "USA"
   },
-  "primaryContact": "321f"
+  "primaryContact": {
+    "personCode": "321f",
+    "firstName": " Bud",
+    "lastName": "Fox",
+    "address": {
+      "Street": "321 Bronx Street",
+      "City": "New York",
+      "State": "NY",
+      "Zip": "10004",
+      "Country": "USA"
+    },
+    "emails": [
+      "bfox@gmail.com",
+      "csheen@crazy.net"
+    ]
+  }
 }}
 {"Customer": {
   "type": "C",
@@ -61,7 +123,21 @@
     "Zip": "60601",
     "Country": "USA"
   },
-  "primaryContact": "bbchar"
+  "primaryContact": {
+    "personCode": "bbchar",
+    "firstName": " Kaylee",
+    "lastName": "Ehrmantraut",
+    "address": {
+      "Street": "800 West 7th Street",
+      "City": " Albuquerque",
+      "State": " NM",
+      "Zip": " 87105",
+      "Country": "USA"
+    },
+    "emails": [
+      "No Email"
+    ]
+  }
 }}
 {"Customer": {
   "type": "C",
@@ -73,8 +149,7 @@
     "State": "NE",
     "Zip": "68500",
     "Country": "USA"
-  },
-  "primaryContact": " 321dr"
+  }
 }}
 {"Customer": {
   "type": "G",
@@ -86,8 +161,7 @@
     "State": "GA",
     "Zip": "56432",
     "Country": "USA"
-  },
-  "primaryContact": "675"
+  }
 }}
 {"Customer": {
   "type": "C",
@@ -99,6 +173,5 @@
     "State": "CA",
     "Zip": "95054",
     "Country": "USA"
-  },
-  "primaryContact": "234"
+  }
 }}

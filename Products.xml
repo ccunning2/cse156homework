@@ -30,13 +30,42 @@
   <name>Cinco-Fone Training</name>
   <code>3289</code>
   <hourlyFee>25.0</hourlyFee>
-  <consultantPersonCode>aef1</consultantPersonCode>
+  <consultant>
+    <personCode>aef1</personCode>
+    <firstName> Gordon</firstName>
+    <lastName>Gekko</lastName>
+    <address>
+      <Street>1 Wall Street</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>10005-0012</Zip>
+      <Country>USA</Country>
+    </address>
+    <emails>
+      <string>No Email</string>
+    </emails>
+  </consultant>
 </Consultation>
 <Consultation>
   <name>Server System Setup</name>
   <code>782g</code>
   <hourlyFee>150.0</hourlyFee>
-  <consultantPersonCode>321nd</consultantPersonCode>
+  <consultant>
+    <personCode>321nd</personCode>
+    <firstName> William</firstName>
+    <lastName>Hartnell</lastName>
+    <address>
+      <Street>1060 West Addison Street</Street>
+      <City>Chicago</City>
+      <State>IL</State>
+      <Zip>60613</Zip>
+      <Country>USA</Country>
+    </address>
+    <emails>
+      <string>whartnell@doctors.com</string>
+      <string>dr@who.com</string>
+    </emails>
+  </consultant>
 </Consultation>
 <License>
   <name>3294</name>
@@ -54,5 +83,4 @@
   <name>Java Training</name>
   <code>7589</code>
   <hourlyFee>2500.0</hourlyFee>
-  <consultantPersonCode> 900.00</consultantPersonCode>
 </Consultation>

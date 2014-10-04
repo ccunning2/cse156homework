@@ -1,13 +1,12 @@
 
 public class Consultation extends Product {
 	private double hourlyFee;
-	private String consultantPersonCode; //Refers to a particular person in persons.dat
+	private Person consultant; //Refers to a particular person in persons.dat
 	
 	
-	public Consultation(String code, String name, String consultantPersonCode, double hourlyFee) {
+	public Consultation(String code, String name, double hourlyFee) {
 		super(name, code);
 		this.hourlyFee = hourlyFee;
-		this.consultantPersonCode = consultantPersonCode;
 	}
 
 
@@ -21,13 +20,13 @@ public class Consultation extends Product {
 	}
 
 
-	public String getConsultantPersonCode() {
-		return consultantPersonCode;
+	public Person getConsultant(){
+		return this.consultant;
 	}
 
 
-	public void setConsultantPersonCode(String consultantPersonCode) {
-		this.consultantPersonCode = consultantPersonCode;
+	public void setConsultant(Person consultant){
+		this.consultant = consultant;
 	}
 	
 	

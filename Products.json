@@ -28,13 +28,42 @@
   "name": "Cinco-Fone Training",
   "code": "3289",
   "hourlyFee": 25.0,
-  "consultantPersonCode": "aef1"
+  "consultant": {
+    "personCode": "aef1",
+    "firstName": " Gordon",
+    "lastName": "Gekko",
+    "address": {
+      "Street": "1 Wall Street",
+      "City": "New York",
+      "State": "NY",
+      "Zip": "10005-0012",
+      "Country": "USA"
+    },
+    "emails": [
+      "No Email"
+    ]
+  }
 }}
 {"Consultation": {
   "name": "Server System Setup",
   "code": "782g",
   "hourlyFee": 150.0,
-  "consultantPersonCode": "321nd"
+  "consultant": {
+    "personCode": "321nd",
+    "firstName": " William",
+    "lastName": "Hartnell",
+    "address": {
+      "Street": "1060 West Addison Street",
+      "City": "Chicago",
+      "State": "IL",
+      "Zip": "60613",
+      "Country": "USA"
+    },
+    "emails": [
+      "whartnell@doctors.com",
+      "dr@who.com"
+    ]
+  }
 }}
 {"License": {
   "name": "3294",
@@ -51,6 +80,5 @@
 {"Consultation": {
   "name": "Java Training",
   "code": "7589",
-  "hourlyFee": 2500.0,
-  "consultantPersonCode": " 900.00"
+  "hourlyFee": 2500.0
 }}

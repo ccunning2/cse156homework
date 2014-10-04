@@ -4,17 +4,20 @@ public class Customer {
 	private String customerCode;
 	private String name;
 	private Address address;
-	private String primaryContact;
+	private Person primaryContact;
 	
 	
 	
-	public Customer(String custCode, String type, String personCode, String name, Address address){
+	public Customer(String custCode, String type, String name, Address address){
 		this.customerCode = custCode;
 		this.type = type;
-		this.primaryContact = personCode;
 		this.name = name;
 		this.address = address;
 		
+	}
+	
+	public void setPrimaryContact(Person primaryContact){
+		this.primaryContact = primaryContact;
 	}
 
 
@@ -67,14 +70,11 @@ public class Customer {
 
 
 
-	public String getPrimaryContact() {
+	public Person getPrimaryContact() {
 		return primaryContact;
 	}
 
 
 
-	public void setPrimaryContact(String primaryContact) {
-		this.primaryContact = primaryContact;
-	}
 	
 }

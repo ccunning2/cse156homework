@@ -37,15 +37,14 @@ public class DataConverter {
 
 		
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("File not found in readPersons()");
 		}
 		return null;
 		
 		
 	}
-	
-	public static Customer[] readCustomers() {  //Will read data from file and output to array
+	//Changed following method to take Persons database as input argument, to be used in instantiating primary contact person
+	public static Customer[] readCustomers(Person[] persons) {  //Will read data from file and output to array. 
 		try {
 		Scanner	s = new Scanner(new FileReader("data/Customers.dat"));
 		
@@ -60,23 +59,30 @@ public class DataConverter {
 		
 			
 			Address address = new Address(info[4]);
+			customers[iterator] = new Customer(info[0], info[1], info[3], address);
 			
-			customers[iterator] = new Customer(info[0], info[1], info[2], info[3], address);
+			for (Person p : persons) {
+				if (p.getPersonCode().equalsIgnoreCase(info[2])) {
+					customers[iterator].setPrimaryContact(p);
+				}
+			}
+			
+			
+			
 			iterator++;
 		}
 		s.close();
 		return customers;
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("File not found in readCustomers()");
 		}
 		return null;
 		
 		
 	}
 	
-	public static Product[] readProducts(){
+	public static Product[] readProducts(Person[] persons){
 		try {
 			Scanner	s = new Scanner(new FileReader("data/Products.dat"));
 			
@@ -93,7 +99,15 @@ public class DataConverter {
 				} else if (info[1].equalsIgnoreCase("L")) {
 					products[iterator] = new License(info[0], info[2],Double.parseDouble(info[3]), Double.parseDouble(info[4]));
 				} else if (info[1].equalsIgnoreCase("C")) {
-					products[iterator] = new Consultation(info[0], info[2], info[3], Double.parseDouble(info[4]) );
+					products[iterator] = new Consultation(info[0], info[2], Double.parseDouble(info[4]) );
+					for (Person p : persons) {
+						if (p.getPersonCode().equalsIgnoreCase(info[3])) {
+							//Test creating new reference variable
+							Consultation consultation = (Consultation) products[iterator];
+							consultation.setConsultant(p);
+						}
+					}
+					
 				} else {
 					products[iterator] = new Product();
 				}
@@ -189,10 +203,10 @@ public class DataConverter {
 		Person[] peeps = readPersons();
 		writeXML(peeps);
 		writeJSON(peeps);
-		Customer[] customers = readCustomers();
+		Customer[] customers = readCustomers(peeps);
 		writeXML(customers);
 		writeJSON(customers);
-		Product[] products = readProducts();
+		Product[] products = readProducts(peeps);
 		writeJSON(products);
 		writeXML(products);
 		

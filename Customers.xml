@@ -11,7 +11,24 @@
     <Zip>68588-0115</Zip>
     <Country>USA</Country>
   </address>
-  <primaryContact>231</primaryContact>
+  <primaryContact>
+    <personCode>231</personCode>
+    <firstName>Tom</firstName>
+    <lastName>Baker</lastName>
+    <address>
+      <Street>1 Blue Jays Way</Street>
+      <City> Toronto</City>
+      <State> ON</State>
+      <Zip> M5V 1J1</Zip>
+      <Country> Canada</Country>
+    </address>
+    <emails>
+      <string>famousdoc@who.com</string>
+      <string>tbaker@cse.unl.edu</string>
+      <string>mostfamous@whovian.com</string>
+      <string>thedoctor@bbc.com</string>
+    </emails>
+  </primaryContact>
 </Customer>
 <Customer>
   <type>C</type>
@@ -24,7 +41,22 @@
     <Zip>10453</Zip>
     <Country>USA</Country>
   </address>
-  <primaryContact>944c</primaryContact>
+  <primaryContact>
+    <personCode>944c</personCode>
+    <firstName> Starlin</firstName>
+    <lastName>Castro</lastName>
+    <address>
+      <Street>1060 West Addison Street</Street>
+      <City>Chicago</City>
+      <State>IL</State>
+      <Zip>60613</Zip>
+      <Country>USA</Country>
+    </address>
+    <emails>
+      <string>scastro@cubs.com</string>
+      <string>starlin_castro13@gmail.com</string>
+    </emails>
+  </primaryContact>
 </Customer>
 <Customer>
   <type>C</type>
@@ -37,7 +69,22 @@
     <Zip>90230</Zip>
     <Country>USA</Country>
   </address>
-  <primaryContact>306a</primaryContact>
+  <primaryContact>
+    <personCode>306a</personCode>
+    <firstName> Brock</firstName>
+    <lastName>Sampson</lastName>
+    <address>
+      <Street>123 N 1st Street</Street>
+      <City>Omaha</City>
+      <State>NE</State>
+      <Zip>68116</Zip>
+      <Country>USA</Country>
+    </address>
+    <emails>
+      <string>brock_f_sampson@gmail.com</string>
+      <string>bsampson@venture.com</string>
+    </emails>
+  </primaryContact>
 </Customer>
 <Customer>
   <type>G</type>
@@ -50,7 +97,22 @@
     <Zip>20755</Zip>
     <Country>USA</Country>
   </address>
-  <primaryContact>321f</primaryContact>
+  <primaryContact>
+    <personCode>321f</personCode>
+    <firstName> Bud</firstName>
+    <lastName>Fox</lastName>
+    <address>
+      <Street>321 Bronx Street</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>10004</Zip>
+      <Country>USA</Country>
+    </address>
+    <emails>
+      <string>bfox@gmail.com</string>
+      <string>csheen@crazy.net</string>
+    </emails>
+  </primaryContact>
 </Customer>
 <Customer>
   <type>C</type>
@@ -63,7 +125,21 @@
     <Zip>60601</Zip>
     <Country>USA</Country>
   </address>
-  <primaryContact>bbchar</primaryContact>
+  <primaryContact>
+    <personCode>bbchar</personCode>
+    <firstName> Kaylee</firstName>
+    <lastName>Ehrmantraut</lastName>
+    <address>
+      <Street>800 West 7th Street</Street>
+      <City> Albuquerque</City>
+      <State> NM</State>
+      <Zip> 87105</Zip>
+      <Country>USA</Country>
+    </address>
+    <emails>
+      <string>No Email</string>
+    </emails>
+  </primaryContact>
 </Customer>
 <Customer>
   <type>C</type>
@@ -76,7 +152,6 @@
     <Zip>68500</Zip>
     <Country>USA</Country>
   </address>
-  <primaryContact> 321dr</primaryContact>
 </Customer>
 <Customer>
   <type>G</type>
@@ -89,7 +164,6 @@
     <Zip>56432</Zip>
     <Country>USA</Country>
   </address>
-  <primaryContact>675</primaryContact>
 </Customer>
 <Customer>
   <type>C</type>
@@ -102,5 +176,4 @@
     <Zip>95054</Zip>
     <Country>USA</Country>
   </address>
-  <primaryContact>234</primaryContact>
 </Customer>
