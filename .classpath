@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="src/xpp3_min-1.1.4c.jar"/>
 	<classpathentry kind="lib" path="src/xstream-1.4.7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/cameroncunning/Documents/cse156homework/bin/joda-time-2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

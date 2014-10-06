@@ -1,6 +1,11 @@
 import java.io.*;
 import java.util.Scanner;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import com.thoughtworks.xstream.*;  
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 //This will read .dat files, parse, create objects, and convert to XML/JSON
@@ -196,6 +201,75 @@ public class DataConverter {
 
 	}
 	
+	public static Invoice[] readInvoice(Person[] persons, Customer[] customers, Product[] products) {
+		try {
+			Scanner	s = new Scanner(new FileReader("data/Invoices.dat"));
+			int count = s.nextInt(); //Number of entries. 
+			Invoice[] invoices = new Invoice[count]; //Array to hold invoices
+			int iterator = 0;
+			s.nextLine(); //Advance scanner to nextline
+			while (s.hasNext()) {
+				String inLine = s.nextLine(); //Make a string out of the next line
+				String[] info;
+				String[] invProducts; //Use this to handle product situation
+				info = inLine.split(";"); //Create array of strings from each line, ; delimited
+				//First, instantiate new invoice object
+				invoices[iterator] = new Invoice(info[0]);
+				for (Customer c : customers) {
+					if (c.getCustomerCode().equalsIgnoreCase(info[1])) {
+						invoices[iterator].setCustomer(c);
+					}
+				} //End customers for each
+				for (Person p: persons) {
+					if (p.getPersonCode().equals(info[2])) {
+						invoices[iterator].setSalesPerson(p);
+					}
+				} // End persons for each
+				
+				
+				//This is a String array of product information
+				invProducts = info[3].split(",");
+				for (String x: invProducts) {
+					int index = x.indexOf(":"); //Get index of occurence of ":"
+					String code = x.substring(0, index); //This is the product code
+					for (Product p : products) { //Iterate over each product in product array
+						if (p.getCode().equals(code)) {
+							if (p.getClass().getSimpleName().equals("Equipment")){
+								invoices[iterator].addProduct(p, Integer.parseInt(x.substring(index+1))); 
+							} else if (p.getClass().getSimpleName().equals("Consultation")) {
+								invoices[iterator].addProduct(p, Integer.parseInt(x.substring(index+1)));
+							} else if (p.getClass().getSimpleName().equals("License")) {
+								System.out.println("License here!");
+								//First we need to get the number of days
+								int index2; //PLacekeeper for substring formation
+								DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
+								
+								index2 = x.indexOf(":", index+1); //Move index to next ":"
+								
+								String start = x.substring(index+1,index2); 
+								String end = x.substring(index2+1);
+							
+								
+								DateTime begin = new DateTime(DateTime.parse(start, fmt));
+								DateTime finish = new DateTime(DateTime.parse(end, fmt));
+								int period = Days.daysBetween(begin, finish).getDays();
+								invoices[iterator].addProduct(p, period);
+							}
+						}
+					}//End for each product loop
+				} //End for stringx:invProducts 
+				
+				iterator++;
+			} //End while
+			s.close();
+			return invoices;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	
 	public static void main(String[] args) {
 		
@@ -209,8 +283,8 @@ public class DataConverter {
 		Product[] products = readProducts(peeps);
 		writeJSON(products);
 		writeXML(products);
-		
-
+		Invoice[] invoicesTest = readInvoice(peeps, customers, products);
+		writeXML(invoicesTest);
 	}
 
 }

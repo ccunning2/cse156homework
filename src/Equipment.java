@@ -5,8 +5,9 @@ public class Equipment extends Product {
 	
 	
 	
+	
 	public Equipment(String code, String name, double pricePerUnit){
-		super(code,name);
+		super(name,code);
 		this.pricePerUnit = pricePerUnit;
 	}
 

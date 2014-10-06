@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 
 <Equipment>
-  <name>b29e</name>
-  <code>Cinco MIDI Organizer</code>
+  <name>Cinco MIDI Organizer</name>
+  <code>b29e</code>
   <pricePerUnit>2500.0</pricePerUnit>
 </Equipment>
 <Equipment>
-  <name>ff23</name>
-  <code>Cinco-Fone</code>
+  <name>Cinco-Fone</name>
+  <code>ff23</code>
   <pricePerUnit>124.99</pricePerUnit>
 </Equipment>
 <Equipment>
-  <name>fp12</name>
-  <code>Internette Discs</code>
+  <name>Internette Discs</name>
+  <code>fp12</code>
   <pricePerUnit>14.99</pricePerUnit>
 </Equipment>
 <Equipment>
-  <name>1239</name>
-  <code>Cinco Video Cube Playback System</code>
+  <name>Cinco Video Cube Playback System</name>
+  <code>1239</code>
   <pricePerUnit>5000.0</pricePerUnit>
 </Equipment>
 <License>
-  <name>90fa</name>
-  <code>Cinco Long Distance Service</code>
+  <name>Cinco Long Distance Service</name>
+  <code>90fa</code>
   <annualLicenseFee>2000.0</annualLicenseFee>
   <serviceFee>12000.0</serviceFee>
 </License>
@@ -68,14 +68,14 @@
   </consultant>
 </Consultation>
 <License>
-  <name>3294</name>
-  <code>Cloud SQL Hosting</code>
+  <name>Cloud SQL Hosting</name>
+  <code>3294</code>
   <annualLicenseFee>0.0</annualLicenseFee>
   <serviceFee>35000.0</serviceFee>
 </License>
 <License>
-  <name>3295</name>
-  <code>Domain registration</code>
+  <name>Domain registration</name>
+  <code>3295</code>
   <annualLicenseFee>350.0</annualLicenseFee>
   <serviceFee>1200.0</serviceFee>
 </License>

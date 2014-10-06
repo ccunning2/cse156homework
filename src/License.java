@@ -4,7 +4,7 @@ public class License extends Product {
 	private double serviceFee;
 	
 	
-	public License(String name, String code, double annualLicenseFee, double serviceFee) {
+	public License(String code, String name, double annualLicenseFee, double serviceFee) {
 		super(name, code);
 		this.annualLicenseFee = annualLicenseFee;
 		this.serviceFee = serviceFee;

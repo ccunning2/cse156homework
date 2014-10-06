@@ -4,6 +4,7 @@ public class Consultation extends Product {
 	private Person consultant; //Refers to a particular person in persons.dat
 	
 	
+	
 	public Consultation(String code, String name, double hourlyFee) {
 		super(name, code);
 		this.hourlyFee = hourlyFee;
