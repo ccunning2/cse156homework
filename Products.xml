@@ -23,8 +23,8 @@
 <License>
   <name>Cinco Long Distance Service</name>
   <code>90fa</code>
-  <annualLicenseFee>2000.0</annualLicenseFee>
-  <serviceFee>12000.0</serviceFee>
+  <annualLicenseFee>12000.0</annualLicenseFee>
+  <serviceFee>2000.0</serviceFee>
 </License>
 <Consultation>
   <name>Cinco-Fone Training</name>
@@ -70,14 +70,14 @@
 <License>
   <name>Cloud SQL Hosting</name>
   <code>3294</code>
-  <annualLicenseFee>0.0</annualLicenseFee>
-  <serviceFee>35000.0</serviceFee>
+  <annualLicenseFee>35000.0</annualLicenseFee>
+  <serviceFee>0.0</serviceFee>
 </License>
 <License>
   <name>Domain registration</name>
   <code>3295</code>
-  <annualLicenseFee>350.0</annualLicenseFee>
-  <serviceFee>1200.0</serviceFee>
+  <annualLicenseFee>1200.0</annualLicenseFee>
+  <serviceFee>350.0</serviceFee>
 </License>
 <Consultation>
   <name>Java Training</name>

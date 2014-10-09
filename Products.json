@@ -21,8 +21,8 @@
 {"License": {
   "name": "Cinco Long Distance Service",
   "code": "90fa",
-  "annualLicenseFee": 2000.0,
-  "serviceFee": 12000.0
+  "annualLicenseFee": 12000.0,
+  "serviceFee": 2000.0
 }}
 {"Consultation": {
   "name": "Cinco-Fone Training",
@@ -68,14 +68,14 @@
 {"License": {
   "name": "Cloud SQL Hosting",
   "code": "3294",
-  "annualLicenseFee": 0.0,
-  "serviceFee": 35000.0
+  "annualLicenseFee": 35000.0,
+  "serviceFee": 0.0
 }}
 {"License": {
   "name": "Domain registration",
   "code": "3295",
-  "annualLicenseFee": 350.0,
-  "serviceFee": 1200.0
+  "annualLicenseFee": 1200.0,
+  "serviceFee": 350.0
 }}
 {"Consultation": {
   "name": "Java Training",

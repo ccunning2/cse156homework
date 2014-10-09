@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Map;
 import java.util.Scanner;
 
 import org.joda.time.DateTime;
@@ -102,7 +103,7 @@ public class DataConverter {
 				if (info[1].equalsIgnoreCase("E")){
 					products[iterator] = new Equipment(info[0], info[2], Double.parseDouble(info[3]));
 				} else if (info[1].equalsIgnoreCase("L")) {
-					products[iterator] = new License(info[0], info[2],Double.parseDouble(info[3]), Double.parseDouble(info[4]));
+					products[iterator] = new License(info[0], info[2],Double.parseDouble(info[4]), Double.parseDouble(info[3]));
 				} else if (info[1].equalsIgnoreCase("C")) {
 					products[iterator] = new Consultation(info[0], info[2], Double.parseDouble(info[4]) );
 					for (Person p : persons) {
@@ -239,7 +240,6 @@ public class DataConverter {
 							} else if (p.getClass().getSimpleName().equals("Consultation")) {
 								invoices[iterator].addProduct(p, Integer.parseInt(x.substring(index+1)));
 							} else if (p.getClass().getSimpleName().equals("License")) {
-								System.out.println("License here!");
 								//First we need to get the number of days
 								int index2; //PLacekeeper for substring formation
 								DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
@@ -271,6 +271,67 @@ public class DataConverter {
 		
 	}
 	
+	//This method will print out our invoices' exec summary
+	public static void printInvoiceExecSummary(Invoice[] invoices) {
+		double summarySubTotal = 0;
+		double summaryFees = 0;
+		double summaryTotal= 0;
+		double summaryTaxes= 0;
+		final String HEADER_FORMAT_STRING = "%-12s%-35s%-30s%10s%13s%14s%13s";
+		final String DATA_FORMAT_STRING = "%-12s%-35s%-30s$%10.2f      $%8.2f    $%8.2f  $%10.2f%n";
+		System.out.println("Executive Summary Report");
+		System.out.println("========================");
+		System.out.printf(HEADER_FORMAT_STRING, "Invoice","Customer","Salesperon","Subtotal","Fees","Taxes","Total\n");
+		for(Invoice i: invoices) {
+			System.out.printf(DATA_FORMAT_STRING, i.getCode(),i.getCustomer().getName(),
+					i.getSalesPerson().getLastName() + "," + i.getSalesPerson().getFirstName(),
+					i.getSubTotal(), i.getInvoiceFees(), i.getTaxes(), i.getTotal());
+			summarySubTotal += i.getSubTotal();
+			summaryFees += i.getInvoiceFees();
+			summaryTaxes += i.getTaxes();
+			summaryTotal += i.getTotal();
+		}
+		System.out.println("=================================================================================================================================");
+		System.out.printf("%-77s$%10.2f      $%8.2f    $%8.2f  $%10.2f%n%n","TOTALS", summarySubTotal,summaryFees,summaryTaxes,summaryTotal);
+	}
+	
+	public static void printInvoiceDetail(Invoice invoice) {
+		final String INVOICE_FORMAT_STRING = "%-10s%-60s$%-10.2f$%-10.2f%n";
+		System.out.println("\nInvoice " + invoice.getCode());
+		System.out.println("Salesperson: " + invoice.getSalesPerson().getLastName() + "," + invoice.getSalesPerson().getFirstName());
+		System.out.println("Customer Info:");
+		System.out.println("   " + invoice.getCustomer().getName());
+		System.out.println("   " + invoice.getCustomer().getPrimaryContact().getLastName() + "," + invoice.getCustomer().getPrimaryContact().getFirstName());
+		System.out.println("   " + invoice.getCustomer().getAddress().getStreet());
+		System.out.println("   " + invoice.getCustomer().getAddress().getCity() + "," + invoice.getCustomer().getAddress().getState() + " " + invoice.getCustomer().getAddress().getZip()
+			+ " " + invoice.getCustomer().getAddress().getCountry());
+		System.out.println("---------------------------------------------------------");
+		System.out.printf("%-10s%-60s%-11s%-10s%n", "Code", "Item", "Fees", "Total");
+		for (Map.Entry<Product, Integer> entry: invoice.Products.entrySet()) {
+			if (entry.getKey() instanceof Equipment){
+				Equipment E = (Equipment) entry.getKey();
+				System.out.printf(INVOICE_FORMAT_STRING, E.getCode(), E.getName()
+						+ " (" + entry.getValue() + " units @ $" + E.getPricePerUnit() + "/unit)", invoice.getFees(E), invoice.getTotal(E, entry.getValue()) );
+			}
+			if (entry.getKey() instanceof Consultation){
+				Consultation C = (Consultation) entry.getKey();
+				System.out.printf(INVOICE_FORMAT_STRING, C.getCode(), C.getName()
+						+ " (" + entry.getValue() + " hours @ $" + C.getHourlyFee() + "/hour)", invoice.getFees(C), invoice.getTotal(C, entry.getValue()) );
+			}
+			if (entry.getKey() instanceof License) {
+				License L = (License) entry.getKey();
+				System.out.printf(INVOICE_FORMAT_STRING, L.getCode(), L.getName()
+						+ " (" + entry.getValue() + " days @ $" + L.getAnnualLicenseFee() + "/yr)", invoice.getFees(L), invoice.getTotal(L, entry.getValue()) );
+			}
+		}
+		System.out.printf("%90s%n", "====================");
+		System.out.printf("%-70s$%-10.2f$%-10.2f%n", "SUB-TOTALS", invoice.getInvoiceFees(), invoice.getSubTotal());
+		System.out.printf("%-81s$%-10.2f%n", "COMPLIANCE FEE", invoice.getComplianceFee());
+		System.out.printf("%-81s$%-10.2f%n", "TAXES", invoice.getTaxes());
+		System.out.printf("%-81s$%-10.2f%n%n%n", "TOTAL",invoice.getTotal());
+		
+	}
+	
 	public static void main(String[] args) {
 		
 		//This is just code to test out what has been done so far
@@ -284,7 +345,10 @@ public class DataConverter {
 		writeJSON(products);
 		writeXML(products);
 		Invoice[] invoicesTest = readInvoice(peeps, customers, products);
-		writeXML(invoicesTest);
+		printInvoiceExecSummary(invoicesTest);
+		for (Invoice i: invoicesTest) {
+			printInvoiceDetail(i);
+		}
 	}
 
 }
