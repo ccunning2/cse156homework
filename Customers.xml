@@ -3,92 +3,60 @@
 <Customer>
   <type>G</type>
   <customerCode>C001</customerCode>
-  <name>University of Nebraska-Lincoln</name>
+  <name>Jose Enterprises</name>
   <address>
-    <Street>259 Avery Hall</Street>
-    <City>Lincoln</City>
-    <State>NE</State>
-    <Zip>68588-0115</Zip>
+    <Street>232 Kitchen Street</Street>
+    <City>Miami</City>
+    <State>FL</State>
+    <Zip>99564</Zip>
     <Country>USA</Country>
   </address>
   <primaryContact>
-    <personCode>231</personCode>
-    <firstName>Tom</firstName>
-    <lastName>Baker</lastName>
+    <personCode>922a</personCode>
+    <firstName> Rick</firstName>
+    <lastName>James</lastName>
     <address>
-      <Street>1 Blue Jays Way</Street>
-      <City> Toronto</City>
-      <State> ON</State>
-      <Zip> M5V 1J1</Zip>
-      <Country> Canada</Country>
+      <Street>1144 South Street</Street>
+      <City>Miami</City>
+      <State>FL</State>
+      <Zip>99564</Zip>
+      <Country>USA</Country>
     </address>
     <emails>
-      <string>famousdoc@who.com</string>
-      <string>tbaker@cse.unl.edu</string>
-      <string>mostfamous@whovian.com</string>
-      <string>thedoctor@bbc.com</string>
+      <string>rjames@yahoo.com</string>
     </emails>
   </primaryContact>
 </Customer>
 <Customer>
   <type>C</type>
   <customerCode>C002</customerCode>
-  <name>Stark Industries</name>
+  <name>Wizards Inc.</name>
   <address>
-    <Street>184 Marvel Way</Street>
-    <City>New York</City>
-    <State>NY</State>
-    <Zip>10453</Zip>
+    <Street>P.O. Box 45</Street>
+    <City>Lincoln</City>
+    <State>NE</State>
+    <Zip>68505</Zip>
     <Country>USA</Country>
   </address>
   <primaryContact>
-    <personCode>944c</personCode>
-    <firstName> Starlin</firstName>
-    <lastName>Castro</lastName>
+    <personCode>675e</personCode>
+    <firstName> Ghandalf</firstName>
+    <lastName>Grey</lastName>
     <address>
-      <Street>1060 West Addison Street</Street>
-      <City>Chicago</City>
-      <State>IL</State>
-      <Zip>60613</Zip>
-      <Country>USA</Country>
+      <Street>1144 Wizards Way</Street>
+      <City></City>
+      <State>Wanaka</State>
+      <Zip>5678</Zip>
+      <Country>New Zealand</Country>
     </address>
     <emails>
-      <string>scastro@cubs.com</string>
-      <string>starlin_castro13@gmail.com</string>
-    </emails>
-  </primaryContact>
-</Customer>
-<Customer>
-  <type>C</type>
-  <customerCode>C003</customerCode>
-  <name>Venture Industries</name>
-  <address>
-    <Street>123 Venture Way</Street>
-    <City>Culver City</City>
-    <State>CA</State>
-    <Zip>90230</Zip>
-    <Country>USA</Country>
-  </address>
-  <primaryContact>
-    <personCode>306a</personCode>
-    <firstName> Brock</firstName>
-    <lastName>Sampson</lastName>
-    <address>
-      <Street>123 N 1st Street</Street>
-      <City>Omaha</City>
-      <State>NE</State>
-      <Zip>68116</Zip>
-      <Country>USA</Country>
-    </address>
-    <emails>
-      <string>brock_f_sampson@gmail.com</string>
-      <string>bsampson@venture.com</string>
+      <string>ghanda@hotmail.com</string>
     </emails>
   </primaryContact>
 </Customer>
 <Customer>
   <type>G</type>
-  <customerCode>C004</customerCode>
+  <customerCode>C003</customerCode>
   <name>National Security Administration</name>
   <address>
     <Street>9800 Savage Rd</Street>
@@ -98,82 +66,45 @@
     <Country>USA</Country>
   </address>
   <primaryContact>
-    <personCode>321f</personCode>
-    <firstName> Bud</firstName>
-    <lastName>Fox</lastName>
+    <personCode>248k</personCode>
+    <firstName> Cameron</firstName>
+    <lastName>Cunning</lastName>
     <address>
-      <Street>321 Bronx Street</Street>
-      <City>New York</City>
-      <State>NY</State>
-      <Zip>10004</Zip>
+      <Street>2240 Park Ave.</Street>
+      <City>Lincoln</City>
+      <State>NE</State>
+      <Zip>68502</Zip>
       <Country>USA</Country>
     </address>
     <emails>
-      <string>bfox@gmail.com</string>
-      <string>csheen@crazy.net</string>
+      <string>ccunning@huskers.com</string>
     </emails>
   </primaryContact>
 </Customer>
 <Customer>
   <type>C</type>
-  <customerCode>C005</customerCode>
-  <name>Vandelay Industries</name>
+  <customerCode>C004</customerCode>
+  <name>Vulture Enterprises</name>
   <address>
-    <Street>1060 West Addison</Street>
-    <City>Chicago</City>
-    <State>IL</State>
-    <Zip>60601</Zip>
-    <Country>USA</Country>
+    <Street>1600 Pennsylvania St</Street>
+    <City>Wanaka</City>
+    <State></State>
+    <Zip>5678</Zip>
+    <Country> New Zealand</Country>
   </address>
   <primaryContact>
-    <personCode>bbchar</personCode>
-    <firstName> Kaylee</firstName>
-    <lastName>Ehrmantraut</lastName>
+    <personCode>348u</personCode>
+    <firstName> Red</firstName>
+    <lastName>Green</lastName>
     <address>
-      <Street>800 West 7th Street</Street>
-      <City> Albuquerque</City>
-      <State> NM</State>
-      <Zip> 87105</Zip>
+      <Street>2326 Yellow Street</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>54321</Zip>
       <Country>USA</Country>
     </address>
     <emails>
-      <string>No Email</string>
+      <string>rgb@hue.com</string>
     </emails>
   </primaryContact>
-</Customer>
-<Customer>
-  <type>C</type>
-  <customerCode>C006</customerCode>
-  <name>Mr. Smith&apos;s #1 Supply Co. Inc.</name>
-  <address>
-    <Street>456 West 7th St.</Street>
-    <City>Omaha</City>
-    <State>NE</State>
-    <Zip>68500</Zip>
-    <Country>USA</Country>
-  </address>
-</Customer>
-<Customer>
-  <type>G</type>
-  <customerCode>C007</customerCode>
-  <name>Umbrella Corp</name>
-  <address>
-    <Street>542 Smith Ave.</Street>
-    <City>Atlanta</City>
-    <State>GA</State>
-    <Zip>56432</Zip>
-    <Country>USA</Country>
-  </address>
-</Customer>
-<Customer>
-  <type>C</type>
-  <customerCode>C008</customerCode>
-  <name>Coke Company</name>
-  <address>
-    <Street>231 North Street</Street>
-    <City>San Francisco</City>
-    <State>CA</State>
-    <Zip>95054</Zip>
-    <Country>USA</Country>
-  </address>
 </Customer>

@@ -1,3 +1,4 @@
+package cinco;
 //Container for address information
 public class Address {
 	private String Street;

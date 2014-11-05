@@ -1,84 +1,41 @@
 {"Equipment": {
-  "name": "Cinco MIDI Organizer",
+  "name": "Cinco Screwdriver",
   "code": "b29e",
-  "pricePerUnit": 2500.0
+  "pricePerUnit": 2.0
 }}
 {"Equipment": {
-  "name": "Cinco-Fone",
+  "name": "Cinco Corkscrew",
   "code": "ff23",
-  "pricePerUnit": 124.99
+  "pricePerUnit": 12.99
 }}
 {"Equipment": {
-  "name": "Internette Discs",
+  "name": "Frisbee",
   "code": "fp12",
-  "pricePerUnit": 14.99
-}}
-{"Equipment": {
-  "name": "Cinco Video Cube Playback System",
-  "code": "1239",
-  "pricePerUnit": 5000.0
+  "pricePerUnit": 2.5
 }}
 {"License": {
-  "name": "Cinco Long Distance Service",
+  "name": "Cinco WiFi Service",
   "code": "90fa",
-  "annualLicenseFee": 12000.0,
-  "serviceFee": 2000.0
+  "annualLicenseFee": 15000.0,
+  "serviceFee": 1500.0
 }}
 {"Consultation": {
-  "name": "Cinco-Fone Training",
-  "code": "3289",
-  "hourlyFee": 25.0,
-  "consultant": {
-    "personCode": "aef1",
-    "firstName": " Gordon",
-    "lastName": "Gekko",
-    "address": {
-      "Street": "1 Wall Street",
-      "City": "New York",
-      "State": "NY",
-      "Zip": "10005-0012",
-      "Country": "USA"
-    },
-    "emails": [
-      "No Email"
-    ]
-  }
-}}
-{"Consultation": {
-  "name": "Server System Setup",
+  "name": "Cellular Support",
   "code": "782g",
-  "hourlyFee": 150.0,
+  "hourlyFee": 32.0,
   "consultant": {
-    "personCode": "321nd",
-    "firstName": " William",
-    "lastName": "Hartnell",
+    "personCode": "322b",
+    "firstName": " Jimmy",
+    "lastName": "Henderson",
     "address": {
-      "Street": "1060 West Addison Street",
-      "City": "Chicago",
-      "State": "IL",
-      "Zip": "60613",
+      "Street": "123 Green Avenue",
+      "City": "Omaha",
+      "State": "NE",
+      "Zip": "68435",
       "Country": "USA"
     },
     "emails": [
-      "whartnell@doctors.com",
-      "dr@who.com"
+      "jhend@gmail.com"
     ]
   }
-}}
-{"License": {
-  "name": "Cloud SQL Hosting",
-  "code": "3294",
-  "annualLicenseFee": 35000.0,
-  "serviceFee": 0.0
-}}
-{"License": {
-  "name": "Domain registration",
-  "code": "3295",
-  "annualLicenseFee": 1200.0,
-  "serviceFee": 350.0
-}}
-{"Consultation": {
-  "name": "Java Training",
-  "code": "7589",
-  "hourlyFee": 2500.0
 }}

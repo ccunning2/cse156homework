@@ -1,86 +1,43 @@
 <?xml version="1.0"?>
 
 <Equipment>
-  <name>Cinco MIDI Organizer</name>
+  <name>Cinco Screwdriver</name>
   <code>b29e</code>
-  <pricePerUnit>2500.0</pricePerUnit>
+  <pricePerUnit>2.0</pricePerUnit>
 </Equipment>
 <Equipment>
-  <name>Cinco-Fone</name>
+  <name>Cinco Corkscrew</name>
   <code>ff23</code>
-  <pricePerUnit>124.99</pricePerUnit>
+  <pricePerUnit>12.99</pricePerUnit>
 </Equipment>
 <Equipment>
-  <name>Internette Discs</name>
+  <name>Frisbee</name>
   <code>fp12</code>
-  <pricePerUnit>14.99</pricePerUnit>
-</Equipment>
-<Equipment>
-  <name>Cinco Video Cube Playback System</name>
-  <code>1239</code>
-  <pricePerUnit>5000.0</pricePerUnit>
+  <pricePerUnit>2.5</pricePerUnit>
 </Equipment>
 <License>
-  <name>Cinco Long Distance Service</name>
+  <name>Cinco WiFi Service</name>
   <code>90fa</code>
-  <annualLicenseFee>12000.0</annualLicenseFee>
-  <serviceFee>2000.0</serviceFee>
+  <annualLicenseFee>15000.0</annualLicenseFee>
+  <serviceFee>1500.0</serviceFee>
 </License>
 <Consultation>
-  <name>Cinco-Fone Training</name>
-  <code>3289</code>
-  <hourlyFee>25.0</hourlyFee>
-  <consultant>
-    <personCode>aef1</personCode>
-    <firstName> Gordon</firstName>
-    <lastName>Gekko</lastName>
-    <address>
-      <Street>1 Wall Street</Street>
-      <City>New York</City>
-      <State>NY</State>
-      <Zip>10005-0012</Zip>
-      <Country>USA</Country>
-    </address>
-    <emails>
-      <string>No Email</string>
-    </emails>
-  </consultant>
-</Consultation>
-<Consultation>
-  <name>Server System Setup</name>
+  <name>Cellular Support</name>
   <code>782g</code>
-  <hourlyFee>150.0</hourlyFee>
+  <hourlyFee>32.0</hourlyFee>
   <consultant>
-    <personCode>321nd</personCode>
-    <firstName> William</firstName>
-    <lastName>Hartnell</lastName>
+    <personCode>322b</personCode>
+    <firstName> Jimmy</firstName>
+    <lastName>Henderson</lastName>
     <address>
-      <Street>1060 West Addison Street</Street>
-      <City>Chicago</City>
-      <State>IL</State>
-      <Zip>60613</Zip>
+      <Street>123 Green Avenue</Street>
+      <City>Omaha</City>
+      <State>NE</State>
+      <Zip>68435</Zip>
       <Country>USA</Country>
     </address>
     <emails>
-      <string>whartnell@doctors.com</string>
-      <string>dr@who.com</string>
+      <string>jhend@gmail.com</string>
     </emails>
   </consultant>
-</Consultation>
-<License>
-  <name>Cloud SQL Hosting</name>
-  <code>3294</code>
-  <annualLicenseFee>35000.0</annualLicenseFee>
-  <serviceFee>0.0</serviceFee>
-</License>
-<License>
-  <name>Domain registration</name>
-  <code>3295</code>
-  <annualLicenseFee>1200.0</annualLicenseFee>
-  <serviceFee>350.0</serviceFee>
-</License>
-<Consultation>
-  <name>Java Training</name>
-  <code>7589</code>
-  <hourlyFee>2500.0</hourlyFee>
 </Consultation>

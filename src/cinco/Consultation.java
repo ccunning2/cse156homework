@@ -1,3 +1,4 @@
+package cinco;
 
 public class Consultation extends Product {
 	private double hourlyFee;

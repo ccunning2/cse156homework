@@ -1,3 +1,4 @@
+package cinco;
 import java.io.*;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class DataConverter {
 	public static Person[] readPersons() {
 		
 		try {
-		Scanner	s = new Scanner(new FileReader("data/Persons.dat"));
+		Scanner	s = new Scanner(new FileReader("data/ourpersons.dat"));
 		
 		int count = s.nextInt(); //Number of entries. 
 		Person[] persons = new Person[count]; //Array to hold persons
@@ -52,7 +53,7 @@ public class DataConverter {
 	//Changed following method to take Persons database as input argument, to be used in instantiating primary contact person
 	public static Customer[] readCustomers(Person[] persons) {  //Will read data from file and output to array. 
 		try {
-		Scanner	s = new Scanner(new FileReader("data/Customers.dat"));
+		Scanner	s = new Scanner(new FileReader("data/ourCustomers.dat"));
 		
 		int count = s.nextInt(); //Number of entries. 
 		Customer[] customers = new Customer[count]; //Array to hold persons
@@ -90,7 +91,7 @@ public class DataConverter {
 	
 	public static Product[] readProducts(Person[] persons){
 		try {
-			Scanner	s = new Scanner(new FileReader("data/Products.dat"));
+			Scanner	s = new Scanner(new FileReader("data/ourProducts.dat"));
 			
 			int count = s.nextInt(); //Number of entries. 
 			Product[] products = new Product[count]; //Array to hold products
@@ -204,7 +205,7 @@ public class DataConverter {
 	
 	public static Invoice[] readInvoice(Person[] persons, Customer[] customers, Product[] products) {
 		try {
-			Scanner	s = new Scanner(new FileReader("data/Invoices.dat"));
+			Scanner	s = new Scanner(new FileReader("data/ourInvoices.dat"));
 			int count = s.nextInt(); //Number of entries. 
 			Invoice[] invoices = new Invoice[count]; //Array to hold invoices
 			int iterator = 0;

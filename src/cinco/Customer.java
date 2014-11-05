@@ -1,3 +1,4 @@
+package cinco;
 
 public class Customer {
 	private String type; //'G' or 'C' depending on government or corporate customer

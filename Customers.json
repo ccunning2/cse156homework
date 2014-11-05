@@ -1,92 +1,60 @@
 {"Customer": {
   "type": "G",
   "customerCode": "C001",
-  "name": "University of Nebraska-Lincoln",
+  "name": "Jose Enterprises",
   "address": {
-    "Street": "259 Avery Hall",
-    "City": "Lincoln",
-    "State": "NE",
-    "Zip": "68588-0115",
+    "Street": "232 Kitchen Street",
+    "City": "Miami",
+    "State": "FL",
+    "Zip": "99564",
     "Country": "USA"
   },
   "primaryContact": {
-    "personCode": "231",
-    "firstName": "Tom",
-    "lastName": "Baker",
+    "personCode": "922a",
+    "firstName": " Rick",
+    "lastName": "James",
     "address": {
-      "Street": "1 Blue Jays Way",
-      "City": " Toronto",
-      "State": " ON",
-      "Zip": " M5V 1J1",
-      "Country": " Canada"
+      "Street": "1144 South Street",
+      "City": "Miami",
+      "State": "FL",
+      "Zip": "99564",
+      "Country": "USA"
     },
     "emails": [
-      "famousdoc@who.com",
-      "tbaker@cse.unl.edu",
-      "mostfamous@whovian.com",
-      "thedoctor@bbc.com"
+      "rjames@yahoo.com"
     ]
   }
 }}
 {"Customer": {
   "type": "C",
   "customerCode": "C002",
-  "name": "Stark Industries",
+  "name": "Wizards Inc.",
   "address": {
-    "Street": "184 Marvel Way",
-    "City": "New York",
-    "State": "NY",
-    "Zip": "10453",
+    "Street": "P.O. Box 45",
+    "City": "Lincoln",
+    "State": "NE",
+    "Zip": "68505",
     "Country": "USA"
   },
   "primaryContact": {
-    "personCode": "944c",
-    "firstName": " Starlin",
-    "lastName": "Castro",
+    "personCode": "675e",
+    "firstName": " Ghandalf",
+    "lastName": "Grey",
     "address": {
-      "Street": "1060 West Addison Street",
-      "City": "Chicago",
-      "State": "IL",
-      "Zip": "60613",
-      "Country": "USA"
+      "Street": "1144 Wizards Way",
+      "City": "",
+      "State": "Wanaka",
+      "Zip": "5678",
+      "Country": "New Zealand"
     },
     "emails": [
-      "scastro@cubs.com",
-      "starlin_castro13@gmail.com"
-    ]
-  }
-}}
-{"Customer": {
-  "type": "C",
-  "customerCode": "C003",
-  "name": "Venture Industries",
-  "address": {
-    "Street": "123 Venture Way",
-    "City": "Culver City",
-    "State": "CA",
-    "Zip": "90230",
-    "Country": "USA"
-  },
-  "primaryContact": {
-    "personCode": "306a",
-    "firstName": " Brock",
-    "lastName": "Sampson",
-    "address": {
-      "Street": "123 N 1st Street",
-      "City": "Omaha",
-      "State": "NE",
-      "Zip": "68116",
-      "Country": "USA"
-    },
-    "emails": [
-      "brock_f_sampson@gmail.com",
-      "bsampson@venture.com"
+      "ghanda@hotmail.com"
     ]
   }
 }}
 {"Customer": {
   "type": "G",
-  "customerCode": "C004",
+  "customerCode": "C003",
   "name": "National Security Administration",
   "address": {
     "Street": "9800 Savage Rd",
@@ -96,82 +64,45 @@
     "Country": "USA"
   },
   "primaryContact": {
-    "personCode": "321f",
-    "firstName": " Bud",
-    "lastName": "Fox",
+    "personCode": "248k",
+    "firstName": " Cameron",
+    "lastName": "Cunning",
     "address": {
-      "Street": "321 Bronx Street",
-      "City": "New York",
-      "State": "NY",
-      "Zip": "10004",
+      "Street": "2240 Park Ave.",
+      "City": "Lincoln",
+      "State": "NE",
+      "Zip": "68502",
       "Country": "USA"
     },
     "emails": [
-      "bfox@gmail.com",
-      "csheen@crazy.net"
+      "ccunning@huskers.com"
     ]
   }
 }}
 {"Customer": {
   "type": "C",
-  "customerCode": "C005",
-  "name": "Vandelay Industries",
+  "customerCode": "C004",
+  "name": "Vulture Enterprises",
   "address": {
-    "Street": "1060 West Addison",
-    "City": "Chicago",
-    "State": "IL",
-    "Zip": "60601",
-    "Country": "USA"
+    "Street": "1600 Pennsylvania St",
+    "City": "Wanaka",
+    "State": "",
+    "Zip": "5678",
+    "Country": " New Zealand"
   },
   "primaryContact": {
-    "personCode": "bbchar",
-    "firstName": " Kaylee",
-    "lastName": "Ehrmantraut",
+    "personCode": "348u",
+    "firstName": " Red",
+    "lastName": "Green",
     "address": {
-      "Street": "800 West 7th Street",
-      "City": " Albuquerque",
-      "State": " NM",
-      "Zip": " 87105",
+      "Street": "2326 Yellow Street",
+      "City": "New York",
+      "State": "NY",
+      "Zip": "54321",
       "Country": "USA"
     },
     "emails": [
-      "No Email"
+      "rgb@hue.com"
     ]
-  }
-}}
-{"Customer": {
-  "type": "C",
-  "customerCode": "C006",
-  "name": "Mr. Smith's #1 Supply Co. Inc.",
-  "address": {
-    "Street": "456 West 7th St.",
-    "City": "Omaha",
-    "State": "NE",
-    "Zip": "68500",
-    "Country": "USA"
-  }
-}}
-{"Customer": {
-  "type": "G",
-  "customerCode": "C007",
-  "name": "Umbrella Corp",
-  "address": {
-    "Street": "542 Smith Ave.",
-    "City": "Atlanta",
-    "State": "GA",
-    "Zip": "56432",
-    "Country": "USA"
-  }
-}}
-{"Customer": {
-  "type": "C",
-  "customerCode": "C008",
-  "name": "Coke Company",
-  "address": {
-    "Street": "231 North Street",
-    "City": "San Francisco",
-    "State": "CA",
-    "Zip": "95054",
-    "Country": "USA"
   }
 }}
