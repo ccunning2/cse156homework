@@ -88,7 +88,7 @@ public class InvoiceData {
 			checkPerson.setString(1, personCode);
 			ResultSet checkedPerson = checkPerson.executeQuery();
 			
-			
+			//For future reference, checking to see if record already exists is not important, but checking for address is
 			if(!checkedPerson.last()) { //If false, record does not exist
 				//Need to add address first. Check if exists.
 				PreparedStatement checkAddress = cunning.prepareStatement("SELECT * FROM Address WHERE Street = ? AND City = ? AND State = ? AND Zip = ?");
@@ -101,7 +101,6 @@ public class InvoiceData {
 				
 				if(!checkedAddress.last()) { //Again, if this is false, the address does not exist. Now add it
 					AddressID = addAddress(street, city, state, zip, country);
-					//TODO Get address ID, should be returned by addAddress
 				} else {  //If address DOES exist, get the address id
 						AddressID = checkedAddress.getInt("AddressID");
 				}
@@ -219,6 +218,48 @@ public class InvoiceData {
 
 	public static void addCustomer(String customerCode, String type, String primaryContactPersonCode, String name, 
 			String street, String city, String state, String zip, String country) {
+		//TODO Verify that this method works
+		Connection customerAdder = sqlConnection.getConnection();
+		
+		
+		//Need to check if address exists or not.. 
+		//TODO Make this a checkAddress method?
+		try {
+			PreparedStatement checkAddress = customerAdder.prepareStatement("SELECT * FROM Address WHERE Street = ? AND City = ? AND State = ? AND Zip = ?");
+			checkAddress.setString(1, street);
+			checkAddress.setString(2, city);
+			checkAddress.setString(3, state);
+			checkAddress.setString(4, zip);
+			ResultSet checkedAddress = checkAddress.executeQuery();
+			int AddressID; //Will store AddressID for adding the customer
+			
+			if(!checkedAddress.last()) { //Again, if this is false, the address does not exist. Now add it
+				AddressID = addAddress(street, city, state, zip, country);
+			} else {  //If address DOES exist, get the address id
+					AddressID = checkedAddress.getInt("AddressID");
+			}
+			
+			checkAddress.close();
+			
+			//Now need to add the customer
+			PreparedStatement customerAdd = customerAdder.prepareStatement("INSERT INTO Customer(custType,custName,custCode,AddressID,priContact) VALUES(?,?,?,?,?)" );
+			customerAdd.setString(1,type);
+			customerAdd.setString(2,name);
+			customerAdd.setString(3, customerCode);
+			customerAdd.setInt(4, AddressID);
+			customerAdd.setString(5, primaryContactPersonCode);
+			
+			customerAdd.executeUpdate();
+			
+			customerAdd.close();
+			customerAdder.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 	/**

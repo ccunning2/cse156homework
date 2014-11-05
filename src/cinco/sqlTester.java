@@ -8,7 +8,9 @@ public class sqlTester {
 //addPerson works
 	//InvoiceData.addPerson("675w", "Steven", "Wright", "1155 Hewlett", "Seattle", "WA", "76432", "USA");
 
-		InvoiceData.removeAllCustomers();
+		//addEmail verified works
+		InvoiceData.addEmail("675e", "LOTRsucks@tolkien.net");
+		
 		
 	}
 
