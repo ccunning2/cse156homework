@@ -348,7 +348,28 @@ public class InvoiceData {
 	 * Adds an license record to the database with the
 	 * provided data.  
 	 */
-	public static void addLicense(String productCode, String name, double serviceFee, double annualFee) {}
+	public static void addLicense(String productCode, String name, double serviceFee, double annualFee) {
+		Connection licenseConn = sqlConnection.getConnection();
+		try {
+			PreparedStatement licenseAdder = licenseConn.prepareStatement("INSERT INTO Products(productCode, prodName, serviceFee, annualFee) VALUES (?,?,?,?)");
+			licenseAdder.setString(1, productCode);
+			licenseAdder.setString(2, name);
+			licenseAdder.setDouble(3, serviceFee);
+			licenseAdder.setDouble(4, annualFee);
+
+			
+			licenseAdder.executeUpdate();
+			
+			licenseAdder.close();
+			
+			licenseConn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 
 	/**
 	 * Adds an consultation record to the database with the
