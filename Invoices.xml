@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+
+<Invoice>
+  <code>INV001</code>
+  <customer>
+    <type>C</type>
+    <customerCode>C002</customerCode>
+    <name>Stark Industries</name>
+    <address>
+      <Street>184 Marvel Way</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>10453</Zip>
+      <Country>USA</Country>
+    </address>
+    <primaryContact>
+      <personCode>944c</personCode>
+      <firstName> Starlin</firstName>
+      <lastName>Castro</lastName>
+      <address>
+        <Street>1060 West Addison Street</Street>
+        <City>Chicago</City>
+        <State>IL</State>
+        <Zip>60613</Zip>
+        <Country>USA</Country>
+      </address>
+      <emails>
+        <string>scastro@cubs.com</string>
+        <string>starlin_castro13@gmail.com</string>
+      </emails>
+    </primaryContact>
+  </customer>
+  <salesPerson>
+    <personCode>nwdoc1</personCode>
+    <firstName> Chris</firstName>
+    <lastName>Eccleston</lastName>
+    <address>
+      <Street>1 E 161st St</Street>
+      <City> Bronx</City>
+      <State> NY</State>
+      <Zip>10451</Zip>
+      <Country>USA</Country>
+    </address>
+    <emails>
+      <string>newguy@whovian.com</string>
+    </emails>
+  </salesPerson>
+  <Products>
+    <entry>
+      <License>
+        <name>Cinco Long Distance Service</name>
+        <code>90fa</code>
+        <annualLicenseFee>2000.0</annualLicenseFee>
+        <serviceFee>12000.0</serviceFee>
+      </License>
+      <int>180</int>
+    </entry>
+    <entry>
+      <Equipment>
+        <name>Cinco MIDI Organizer</name>
+        <code>b29e</code>
+        <pricePerUnit>2500.0</pricePerUnit>
+      </Equipment>
+      <int>2</int>
+    </entry>
+  </Products>
+</Invoice>
+<Invoice>
+  <code>INV002</code>
+  <customer>
+    <type>G</type>
+    <customerCode>C001</customerCode>
+    <name>University of Nebraska-Lincoln</name>
+    <address>
+      <Street>259 Avery Hall</Street>
+      <City>Lincoln</City>
+      <State>NE</State>
+      <Zip>68588-0115</Zip>
+      <Country>USA</Country>
+    </address>
+    <primaryContact>
+      <personCode>231</personCode>
+      <firstName>Tom</firstName>
+      <lastName>Baker</lastName>
+      <address>
+        <Street>1 Blue Jays Way</Street>
+        <City> Toronto</City>
+        <State> ON</State>
+        <Zip> M5V 1J1</Zip>
+        <Country> Canada</Country>
+      </address>
+      <emails>
+        <string>famousdoc@who.com</string>
+        <string>tbaker@cse.unl.edu</string>
+        <string>mostfamous@whovian.com</string>
+        <string>thedoctor@bbc.com</string>
+      </emails>
+    </primaryContact>
+  </customer>
+  <salesPerson>
+    <personCode>wrddoc</personCode>
+    <firstName> Matt</firstName>
+    <lastName>Smith</lastName>
+    <address>
+      <Street>333 W 35th St</Street>
+      <City> Chicago</City>
+      <State> IL</State>
+      <Zip>60616</Zip>
+      <Country>USA</Country>
+    </address>
+    <emails>
+      <string>msmith@who.com</string>
+      <string>thedoc@cse.unl.edu</string>
+    </emails>
+  </salesPerson>
+  <Products>
+    <entry>
+      <Equipment>
+        <name>Cinco Video Cube Playback System</name>
+        <code>1239</code>
+        <pricePerUnit>5000.0</pricePerUnit>
+      </Equipment>
+      <int>1</int>
+    </entry>
+    <entry>
+      <Consultation>
+        <name>Cinco-Fone Training</name>
+        <code>3289</code>
+        <hourlyFee>25.0</hourlyFee>
+        <consultant>
+          <personCode>aef1</personCode>
+          <firstName> Gordon</firstName>
+          <lastName>Gekko</lastName>
+          <address>
+            <Street>1 Wall Street</Street>
+            <City>New York</City>
+            <State>NY</State>
+            <Zip>10005-0012</Zip>
+            <Country>USA</Country>
+          </address>
+          <emails>
+            <string>No Email</string>
+          </emails>
+        </consultant>
+      </Consultation>
+      <int>10</int>
+    </entry>
+    <entry>
+      <Equipment>
+        <name>Cinco-Fone</name>
+        <code>ff23</code>
+        <pricePerUnit>124.99</pricePerUnit>
+      </Equipment>
+      <int>25</int>
+    </entry>
+  </Products>
+</Invoice>
+<Invoice>
+  <code>INV003</code>
+  <customer>
+    <type>C</type>
+    <customerCode>C005</customerCode>
+    <name>Vandelay Industries</name>
+    <address>
+      <Street>1060 West Addison</Street>
+      <City>Chicago</City>
+      <State>IL</State>
+      <Zip>60601</Zip>
+      <Country>USA</Country>
+    </address>
+    <primaryContact>
+      <personCode>bbchar</personCode>
+      <firstName> Kaylee</firstName>
+      <lastName>Ehrmantraut</lastName>
+      <address>
+        <Street>800 West 7th Street</Street>
+        <City> Albuquerque</City>
+        <State> NM</State>
+        <Zip> 87105</Zip>
+        <Country>USA</Country>
+      </address>
+      <emails>
+        <string>No Email</string>
+      </emails>
+    </primaryContact>
+  </customer>
+  <salesPerson>
+    <personCode>2ndbestd</personCode>
+    <firstName> David</firstName>
+    <lastName>Tennant</lastName>
+    <address>
+      <Street>700 E Grand Ave</Street>
+      <City> Chicago</City>
+      <State> IL</State>
+      <Zip> 60611</Zip>
+      <Country>USA</Country>
+    </address>
+    <emails>
+      <string>actor@shakespeare.com</string>
+      <string>tdavid@unl.edu</string>
+    </emails>
+  </salesPerson>
+  <Products>
+    <entry>
+      <License>
+        <name>Cinco Long Distance Service</name>
+        <code>90fa</code>
+        <annualLicenseFee>2000.0</annualLicenseFee>
+        <serviceFee>12000.0</serviceFee>
+      </License>
+      <int>715</int>
+    </entry>
+    <entry>
+      <Equipment>
+        <name>Cinco-Fone</name>
+        <code>ff23</code>
+        <pricePerUnit>124.99</pricePerUnit>
+      </Equipment>
+      <int>10</int>
+    </entry>
+  </Products>
+</Invoice>
+<Invoice>
+  <code>INV004</code>
+  <customer>
+    <type>C</type>
+    <customerCode>C002</customerCode>
+    <name>Stark Industries</name>
+    <address>
+      <Street>184 Marvel Way</Street>
+      <City>New York</City>
+      <State>NY</State>
+      <Zip>10453</Zip>
+      <Country>USA</Country>
+    </address>
+    <primaryContact>
+      <personCode>944c</personCode>
+      <firstName> Starlin</firstName>
+      <lastName>Castro</lastName>
+      <address>
+        <Street>1060 West Addison Street</Street>
+        <City>Chicago</City>
+        <State>IL</State>
+        <Zip>60613</Zip>
+        <Country>USA</Country>
+      </address>
+      <emails>
+        <string>scastro@cubs.com</string>
+        <string>starlin_castro13@gmail.com</string>
+      </emails>
+    </primaryContact>
+  </customer>
+  <salesPerson>
+    <personCode>2ndbestd</personCode>
+    <firstName> David</firstName>
+    <lastName>Tennant</lastName>
+    <address>
+      <Street>700 E Grand Ave</Street>
+      <City> Chicago</City>
+      <State> IL</State>
+      <Zip> 60611</Zip>
+      <Country>USA</Country>
+    </address>
+    <emails>
+      <string>actor@shakespeare.com</string>
+      <string>tdavid@unl.edu</string>
+    </emails>
+  </salesPerson>
+  <Products>
+    <entry>
+      <Consultation>
+        <name>Server System Setup</name>
+        <code>782g</code>
+        <hourlyFee>150.0</hourlyFee>
+        <consultant>
+          <personCode>321nd</personCode>
+          <firstName> William</firstName>
+          <lastName>Hartnell</lastName>
+          <address>
+            <Street>1060 West Addison Street</Street>
+            <City>Chicago</City>
+            <State>IL</State>
+            <Zip>60613</Zip>
+            <Country>USA</Country>
+          </address>
+          <emails>
+            <string>whartnell@doctors.com</string>
+            <string>dr@who.com</string>
+          </emails>
+        </consultant>
+      </Consultation>
+      <int>10</int>
+    </entry>
+    <entry>
+      <License>
+        <name>Cloud SQL Hosting</name>
+        <code>3294</code>
+        <annualLicenseFee>0.0</annualLicenseFee>
+        <serviceFee>35000.0</serviceFee>
+      </License>
+      <int>1825</int>
+    </entry>
+    <entry>
+      <License>
+        <name>Domain registration</name>
+        <code>3295</code>
+        <annualLicenseFee>350.0</annualLicenseFee>
+        <serviceFee>1200.0</serviceFee>
+      </License>
+      <int>1825</int>
+    </entry>
+  </Products>
+</Invoice>
