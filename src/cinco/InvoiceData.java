@@ -432,5 +432,23 @@ public class InvoiceData {
 	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
 	 * number of billable hours.
 	 */
-	public static void addConsultationToInvoice(String invoiceCode, String productCode, double numHours) {}
+	public static void addConsultationToInvoice(String invoiceCode, String productCode, double numHours) {
+		
+		Connection conn = sqlConnection.getConnection();
+
+		try {
+
+			Statement statement = conn.createStatement();
+			String sql = "INSERT INTO Invoice(invoiceCode,productCode,quantity) VALUES('"+invoiceCode+"','"+productCode+"','"+numHours+"')";
+			statement.execute(sql);
+			
+			conn.close();
+			statement.close();
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
 }
