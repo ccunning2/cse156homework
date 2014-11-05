@@ -465,6 +465,8 @@ public class InvoiceData {
 			pstmt.setString(2,productCode);
 			pstmt.setDouble(3,numHours);
 			
+			pstmt.executeUpdate();
+			
 			conn.close();
 			pstmt.close();
 			
