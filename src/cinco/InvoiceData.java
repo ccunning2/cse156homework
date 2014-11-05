@@ -95,6 +95,19 @@ public class InvoiceData {
 	 * @param email
 	 */
 	public static void addEmail(String personCode, String email) {
+		Connection emailConn = sqlConnection.getConnection();
+		try {
+			PreparedStatement emailAdder = emailConn.prepareStatement("INSERT INTO Emails(address, Person) VALUES (?,?)");
+			emailAdder.setString(1, email);
+			emailAdder.setString(2, personCode);
+			emailAdder.executeUpdate();
+			
+			emailAdder.close();
+			emailConn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -138,15 +151,8 @@ public class InvoiceData {
 	 */
 	public static void removeAllCustomers() {
 
-		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
-		String user = "YOUR_LOGIN";
-		String password = "YOUR_SQL_PASWORD";
-
-		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url, user, password);
+			Connection conn = sqlConnection.getConnection();
+			try {
 			Statement statement = conn.createStatement();
 
 
@@ -154,8 +160,8 @@ public class InvoiceData {
 			String sql2 = "DELETE FROM Customer";
 			 
 
-			statement.executeQuery(sql1); 
-			statement.executeQuery(sql2); 
+			statement.executeUpdate(sql1); 
+			statement.executeUpdate(sql2); 
 			conn.close();
 			
 		}catch(Exception e){
