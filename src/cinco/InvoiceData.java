@@ -118,12 +118,12 @@ public class InvoiceData {
 			Statement statement = conn.createStatement();
 
 
-			String sql2 = "DELETE FROM Invoice";
-			String sql3 = "DELETE FROM Customer";
+			String sql1 = "DELETE FROM Invoice";
+			String sql2 = "DELETE FROM Customer";
 			 
 
+			statement.executeQuery(sql1); 
 			statement.executeQuery(sql2); 
-			statement.executeQuery(sql3); 
 			conn.close();
 			
 		}catch(Exception e){
@@ -150,11 +150,11 @@ public class InvoiceData {
 			Connection conn = DriverManager.getConnection(url, user, password);
 			Statement statement = conn.createStatement();
 
-			String sql2 = "DELETE FROM Invoice";
-			String sql3 = "DELETE FROM Product";
+			String sql1 = "DELETE FROM Invoice";
+			String sql2 = "DELETE FROM Product";
 			 
+			statement.executeQuery(sql1); 
 			statement.executeQuery(sql2); 
-			statement.executeQuery(sql3); 
  			conn.close();
 			
 		}catch(Exception e){
