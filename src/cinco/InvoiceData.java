@@ -17,17 +17,18 @@ public class InvoiceData {
 		Connection conn = sqlConnection.getConnection();
 
 		try {
-			Statement statement = conn.createStatement();
+			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Emails");
+			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Invoice");
+			PreparedStatement sql3 = conn.prepareStatement("DELETE FROM Person");
 
-			String sql1 = "DELETE FROM Emails";
-			String sql2 = "DELETE FROM Invoice";
-			String sql3 = "DELETE FROM Person";
 			
-			statement.executeUpdate(sql1);  
-			statement.executeUpdate(sql2); 
-			statement.executeUpdate(sql3); 
+			sql1.executeUpdate();  
+			sql2.executeUpdate(); 
+			sql3.executeUpdate(); 
 			conn.close();
-			statement.close();
+			sql1.close();
+			sql2.close();
+			sql3.close();
 			
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
