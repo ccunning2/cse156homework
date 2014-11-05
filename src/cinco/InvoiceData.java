@@ -12,8 +12,28 @@ public class InvoiceData {
 	/**
 	 * Method that removes every person record from the database
 	 */
-	public static void removeAllPersons() { //To remove all persons will need to delete
+	public static void removeAllPersons() {
 		
+		Connection conn = sqlConnection.getConnection();
+
+		try {
+			Statement statement = conn.createStatement();
+
+			String sql1 = "DELETE FROM Emails";
+			String sql2 = "DELETE FROM Invoice";
+			String sql3 = "DELETE FROM Person";
+			
+			statement.executeUpdate(sql1);  
+			statement.executeUpdate(sql2); 
+			statement.executeUpdate(sql3); 
+			conn.close();
+			statement.close();
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -21,7 +41,30 @@ public class InvoiceData {
 	 * provided <code>personCode</code>
 	 * @param personCode
 	 */
-	public static void removePerson(String personCode) {}
+	public static void removePerson(String personCode) {
+		
+		Connection conn = sqlConnection.getConnection();
+
+		try {
+
+			Statement statement = conn.createStatement();
+
+			String sql1 = "DELETE FROM Email WHERE personCode='"+personCode+"'";
+			String sql2 = "DELETE FROM Invoice WHERE personCode='"+personCode+"'";
+			String sql3 = "DELETE FROM Person WHERE personCode='"+personCode+"'";
+			
+			statement.executeUpdate(sql1);  
+			statement.executeUpdate(sql2); 
+			statement.executeUpdate(sql3); 
+			conn.close();
+			statement.close();
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * Method to add a person record to the database with the provided data. 
@@ -150,24 +193,28 @@ public class InvoiceData {
 	 * Method that removes every customer record from the database
 	 */
 	public static void removeAllCustomers() {
+		
+		Connection conn = sqlConnection.getConnection();
 
-			Connection conn = sqlConnection.getConnection();
-			try {
+		try {
+
 			Statement statement = conn.createStatement();
 
 
-			String sql1 = "DELETE FROM Invoice";
-			String sql2 = "DELETE FROM Customer";
+			String sql2 = "DELETE FROM Invoice";
+			String sql3 = "DELETE FROM Customer";
 			 
 
-			statement.executeUpdate(sql1); 
 			statement.executeUpdate(sql2); 
+			statement.executeUpdate(sql3); 
 			conn.close();
+			statement.close();
 			
-		}catch(Exception e){
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
-
 	}
 
 	public static void addCustomer(String customerCode, String type, String primaryContactPersonCode, String name, 
@@ -181,24 +228,23 @@ public class InvoiceData {
 
 	public static void removeAllProducts() {
 		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
-		String user = "YOUR_LOGIN";
-		String password = "YOUR_SQL_PASWORD";
+		Connection conn = sqlConnection.getConnection();
 
 		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url, user, password);
+
 			Statement statement = conn.createStatement();
 
-			String sql1 = "DELETE FROM Invoice";
-			String sql2 = "DELETE FROM Product";
+			String sql2 = "DELETE FROM Invoice";
+			String sql3 = "DELETE FROM Product";
 			 
-			statement.executeQuery(sql1); 
-			statement.executeQuery(sql2); 
+			statement.executeUpdate(sql2); 
+			statement.executeUpdate(sql3); 
  			conn.close();
+ 			statement.close();
 			
-		}catch(Exception e){
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}catch(SQLException e){
 			e.printStackTrace();
 		}
 	}
@@ -209,7 +255,27 @@ public class InvoiceData {
 	 * provided <code>productCode</code>
 	 * @param assetCode
 	 */
-	public static void removeProduct(String productCode) {}
+	public static void removeProduct(String productCode) {
+		
+		Connection conn = sqlConnection.getConnection();
+
+		try {
+			Statement statement = conn.createStatement();
+
+			String sql1 = "DELETE FROM Invoice WHERE productCode='"+productCode+"'";
+			String sql2 = "DELETE FROM Product WHERE productCode='"+productCode+"'";
+			 
+			statement.executeUpdate(sql1); 
+			statement.executeUpdate(sql2); 
+			conn.close();
+			statement.close();
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Adds an equipment record to the database with the
@@ -232,14 +298,54 @@ public class InvoiceData {
 	/**
 	 * Removes all invoice records from the database
 	 */
-	public static void removeAllInvoices() {}
+	public static void removeAllInvoices() {
+		
+		Connection conn = sqlConnection.getConnection();
+
+		try {
+
+			Statement statement = conn.createStatement();
+
+			String sql1 = "DELETE FROM Invoice";
+			 
+			statement.executeUpdate(sql1); 
+
+			conn.close();
+			statement.close();
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * Removes the invoice record from the database corresponding to the
 	 * provided <code>invoiceCode</code>
 	 * @param invoiceCode
 	 */
-	public static void removeInvoice(String invoiceCode) {}
+	public static void removeInvoice(String invoiceCode) {
+		
+		Connection conn = sqlConnection.getConnection();
+
+		try {
+
+			Statement statement = conn.createStatement();
+
+			String sql1 = "DELETE FROM Invoice WHERE invoiceCode='"+invoiceCode+"'";
+			 
+			statement.executeUpdate(sql1); 
+			
+			conn.close();
+			statement.close();
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * Adds an invoice record to the database with the given data.  
