@@ -212,14 +212,55 @@ public class InvoiceData {
 	/**
 	 * Removes all invoice records from the database
 	 */
-	public static void removeAllInvoices() {}
+	public static void removeAllInvoices() {
+		
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
+		String user = "YOUR_LOGIN";
+		String password = "YOUR_SQL_PASWORD";
+
+		try {
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, user, password);
+			Statement statement = conn.createStatement();
+
+			String sql1 = "DELETE FROM Invoice";
+			 
+			statement.executeQuery(sql1); 
+
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * Removes the invoice record from the database corresponding to the
 	 * provided <code>invoiceCode</code>
 	 * @param invoiceCode
 	 */
-	public static void removeInvoice(String invoiceCode) {}
+	public static void removeInvoice(String invoiceCode) {
+		
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
+		String user = "YOUR_LOGIN";
+		String password = "YOUR_SQL_PASWORD";
+
+		try {
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, user, password);
+			Statement statement = conn.createStatement();
+
+			String sql1 = "DELETE FROM Invoice WHERE invoiceCode='"+invoiceCode+"'";
+			 
+			statement.executeQuery(sql1); 
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * Adds an invoice record to the database with the given data.  
