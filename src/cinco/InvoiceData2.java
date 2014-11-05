@@ -1,16 +1,19 @@
 package cinco;
 
+import java.sql.*;
+
 /**
  * This is a collection of utility methods that define a general API for
  * interacting with the database supporting this application.
  *
  */
-public class InvoiceData {
+public class InvoiceData2 {
 
 	/**
 	 * Method that removes every person record from the database
 	 */
-	public static void removeAllPersons() {
+	public static void removeAllPersons() { //To remove all persons will need to delete
+		
 	}
 
 	/**
@@ -33,6 +36,54 @@ public class InvoiceData {
 	 */
 	public static void addPerson(String personCode, String firstName, String lastName, 
 			String street, String city, String state, String zip, String country) {
+		Connection cunning = sqlConnection.getConnection();
+		
+		//Need to check if address exists, and if so, get addressID. Else- Create address and get addressID
+		//First check if person exists
+		try {
+			PreparedStatement checkPerson = cunning.prepareStatement("SELECT * FROM Person WHERE PersonCode = ?");
+			checkPerson.setString(1, personCode);
+			ResultSet checkedPerson = checkPerson.executeQuery();
+			
+			
+			if(!checkedPerson.last()) { //If false, record does not exist
+				//Need to add address first. Check if exists.
+				PreparedStatement checkAddress = cunning.prepareStatement("SELECT * FROM Address WHERE Street = ? AND City = ? AND State = ? AND Zip = ?");
+				checkAddress.setString(1, street);
+				checkAddress.setString(2, city);
+				checkAddress.setString(3, state);
+				checkAddress.setString(4, zip);
+				ResultSet checkedAddress = checkAddress.executeQuery();
+				int AddressID; //Will store AddressID for adding the person
+				
+				if(!checkedAddress.last()) { //Again, if this is false, the address does not exist. Now add it
+					AddressID = addAddress(street, city, state, zip, country);
+					//TODO Get address ID, should be returned by addAddress
+				} else {  //If address DOES exist, get the address id
+						AddressID = checkedAddress.getInt("AddressID");
+				}
+				
+				checkedAddress.close();
+				checkAddress.close();
+				
+				//Finally time to add the person
+				PreparedStatement addperson = cunning.prepareStatement("INSERT INTO Persons(PersonCode, AddressID, FirstName, LastName) VALUES (?,?,?,?)");
+				addperson.setString(1, personCode);
+				addperson.setInt(2, AddressID);
+				addperson.setString(3, firstName);
+				addperson.setString(4, lastName);
+				
+				addperson.execute();
+				
+			}
+		checkPerson.close();
+		checkedPerson.close();	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			
+		}
 	}
 	
 	/**
@@ -44,6 +95,13 @@ public class InvoiceData {
 	public static void addEmail(String personCode, String email) {
 	}
 	
+	
+	/**
+	 * Method to add an address to the database
+	 */
+	public static int addAddress(String street, String city, String state, String zip, String country) {
+		//TODO Add this method, also have return AddressID
+	}
 	/**
 	 * Method that removes every customer record from the database
 	 */

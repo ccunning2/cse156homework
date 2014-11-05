@@ -8,17 +8,21 @@ public class sqlTester {
 		String sql = "SELECT Person.* , Address.* FROM Person JOIN Address ON Person.AddressID=Address.AddressID";
 		ResultSet rs = null;
 		try {
-			PreparedStatement ps = cunning.prepareStatement(sql);
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				System.out.println(rs.getString("FirstName"));
-			}
+			String personCode = "666";
+			PreparedStatement checkPerson = cunning.prepareStatement("SELECT * FROM Person WHERE PersonCode = ?");
+			checkPerson.setString(1, personCode);
+			ResultSet checkedPerson = checkPerson.executeQuery();
+			 if (!checkedPerson.last()) { //If checkedPerson.last is true, there are results and the person exists
+				 
+			 }
+			 checkPerson.close();
+			checkedPerson.close();
+			cunning.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			rs.close();
 			cunning.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
