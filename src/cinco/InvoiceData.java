@@ -67,13 +67,13 @@ public class InvoiceData {
 				checkAddress.close();
 				
 				//Finally time to add the person
-				PreparedStatement addperson = cunning.prepareStatement("INSERT INTO Persons(PersonCode, AddressID, FirstName, LastName) VALUES (?,?,?,?)");
+				PreparedStatement addperson = cunning.prepareStatement("INSERT INTO Person(PersonCode, AddressID, FirstName, LastName) VALUES (?,?,?,?)");
 				addperson.setString(1, personCode);
 				addperson.setInt(2, AddressID);
 				addperson.setString(3, firstName);
 				addperson.setString(4, lastName);
 				
-				addperson.execute();
+				addperson.executeUpdate();
 				
 			}
 		checkPerson.close();
