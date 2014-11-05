@@ -15,8 +15,37 @@ public class InvoiceData {
 	/**
 	 * Method that removes every person record from the database
 	 */
+	public static void removeAllPersons()  {
+
+	/**
+	 * Method that removes every person record from the database
+	 */
 	public static void removeAllPersons() {
+		
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
+		String user = "YOUR_LOGIN";
+		String password = "YOUR_SQL_PASWORD";
+
+		try {
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, user, password);
+			Statement statement = conn.createStatement();
+
+			String sql1 = "DELETE FROM `email`";
+			String sql2 = "DELETE FROM `invoice`";
+			String sql3 = "DELETE FROM `person`";
+			
+			statement.executeQuery(sql1);  
+			statement.executeQuery(sql2); 
+			statement.executeQuery(sql3); 
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
+
 
 	/**
 	 * Removes the person record from the database corresponding to the
