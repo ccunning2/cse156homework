@@ -106,6 +106,29 @@ public class InvoiceData {
 	 * Method that removes every customer record from the database
 	 */
 	public static void removeAllCustomers() {
+		
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
+		String user = "YOUR_LOGIN";
+		String password = "YOUR_SQL_PASWORD";
+
+		try {
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, user, password);
+			Statement statement = conn.createStatement();
+
+
+			String sql2 = "DELETE FROM Invoice";
+			String sql3 = "DELETE FROM Customer";
+			 
+
+			statement.executeQuery(sql2); 
+			statement.executeQuery(sql3); 
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	public static void addCustomer(String customerCode, String type, String primaryContactPersonCode, String name, 
