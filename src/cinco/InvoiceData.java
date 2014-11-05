@@ -322,7 +322,27 @@ public class InvoiceData {
 	 * Adds an equipment record to the database with the
 	 * provided data.  
 	 */
-	public static void addEquipment(String productCode, String name, Double pricePerUnit) {}
+	public static void addEquipment(String productCode, String name, Double pricePerUnit) {
+		
+		Connection equipConn = sqlConnection.getConnection();
+		try {
+			PreparedStatement equipAdder = equipConn.prepareStatement("INSERT INTO Products(productCode, prodName, pricePerUnit) VALUES (?,?,?)");
+			equipAdder.setString(1, productCode);
+			equipAdder.setString(2, name);
+			equipAdder.setDouble(3, pricePerUnit);
+			
+			equipAdder.executeUpdate();
+			
+			equipAdder.close();
+			
+			equipConn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	
 	/**
 	 * Adds an license record to the database with the
