@@ -1,9 +1,6 @@
 package cinco;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * This is a collection of utility methods that define a general API for
@@ -15,68 +12,16 @@ public class InvoiceData {
 	/**
 	 * Method that removes every person record from the database
 	 */
-	public static void removeAllPersons()  {
-
-	/**
-	 * Method that removes every person record from the database
-	 */
-	public static void removeAllPersons() {
+	public static void removeAllPersons() { //To remove all persons will need to delete
 		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
-		String user = "YOUR_LOGIN";
-		String password = "YOUR_SQL_PASWORD";
-
-		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url, user, password);
-			Statement statement = conn.createStatement();
-
-			String sql1 = "DELETE FROM Emails";
-			String sql2 = "DELETE FROM Invoice";
-			String sql3 = "DELETE FROM Person";
-			
-			statement.executeQuery(sql1);  
-			statement.executeQuery(sql2); 
-			statement.executeQuery(sql3); 
-			conn.close();
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
 	}
-
 
 	/**
 	 * Removes the person record from the database corresponding to the
 	 * provided <code>personCode</code>
 	 * @param personCode
 	 */
-	public static void removePerson(String personCode) {
-		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
-		String user = "YOUR_LOGIN";
-		String password = "YOUR_SQL_PASWORD";
-
-		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url, user, password);
-			Statement statement = conn.createStatement();
-
-			String sql1 = "DELETE FROM Email WHERE personCode='"+personCode+"'";
-			String sql2 = "DELETE FROM Invoice WHERE personCode='"+personCode+"'";
-			String sql3 = "DELETE FROM Person WHERE personCode='"+personCode+"'";
-			
-			statement.executeQuery(sql1);  
-			statement.executeQuery(sql2); 
-			statement.executeQuery(sql3); 
-			conn.close();
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
+	public static void removePerson(String personCode) {}
 	
 	/**
 	 * Method to add a person record to the database with the provided data. 
@@ -91,6 +36,54 @@ public class InvoiceData {
 	 */
 	public static void addPerson(String personCode, String firstName, String lastName, 
 			String street, String city, String state, String zip, String country) {
+		Connection cunning = sqlConnection.getConnection();
+		
+		//Need to check if address exists, and if so, get addressID. Else- Create address and get addressID
+		//First check if person exists
+		try {
+			PreparedStatement checkPerson = cunning.prepareStatement("SELECT * FROM Person WHERE PersonCode = ?");
+			checkPerson.setString(1, personCode);
+			ResultSet checkedPerson = checkPerson.executeQuery();
+			
+			
+			if(!checkedPerson.last()) { //If false, record does not exist
+				//Need to add address first. Check if exists.
+				PreparedStatement checkAddress = cunning.prepareStatement("SELECT * FROM Address WHERE Street = ? AND City = ? AND State = ? AND Zip = ?");
+				checkAddress.setString(1, street);
+				checkAddress.setString(2, city);
+				checkAddress.setString(3, state);
+				checkAddress.setString(4, zip);
+				ResultSet checkedAddress = checkAddress.executeQuery();
+				int AddressID; //Will store AddressID for adding the person
+				
+				if(!checkedAddress.last()) { //Again, if this is false, the address does not exist. Now add it
+					AddressID = addAddress(street, city, state, zip, country);
+					//TODO Get address ID, should be returned by addAddress
+				} else {  //If address DOES exist, get the address id
+						AddressID = checkedAddress.getInt("AddressID");
+				}
+				
+				checkedAddress.close();
+				checkAddress.close();
+				
+				//Finally time to add the person
+				PreparedStatement addperson = cunning.prepareStatement("INSERT INTO Persons(PersonCode, AddressID, FirstName, LastName) VALUES (?,?,?,?)");
+				addperson.setString(1, personCode);
+				addperson.setInt(2, AddressID);
+				addperson.setString(3, firstName);
+				addperson.setString(4, lastName);
+				
+				addperson.execute();
+				
+			}
+		checkPerson.close();
+		checkedPerson.close();	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			
+		}
 	}
 	
 	/**
@@ -102,33 +95,17 @@ public class InvoiceData {
 	public static void addEmail(String personCode, String email) {
 	}
 	
+	
+	/**
+	 * Method to add an address to the database
+	 */
+	public static int addAddress(String street, String city, String state, String zip, String country) {
+		//TODO Add this method, also have return AddressID
+	}
 	/**
 	 * Method that removes every customer record from the database
 	 */
 	public static void removeAllCustomers() {
-		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
-		String user = "YOUR_LOGIN";
-		String password = "YOUR_SQL_PASWORD";
-
-		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url, user, password);
-			Statement statement = conn.createStatement();
-
-
-			String sql1 = "DELETE FROM Invoice";
-			String sql2 = "DELETE FROM Customer";
-			 
-
-			statement.executeQuery(sql1); 
-			statement.executeQuery(sql2); 
-			conn.close();
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
 	}
 
 	public static void addCustomer(String customerCode, String type, String primaryContactPersonCode, String name, 
@@ -138,58 +115,14 @@ public class InvoiceData {
 	/**
 	 * Removes all product records from the database
 	 */
-	public static void removeAllProducts() {
-		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
-		String user = "YOUR_LOGIN";
-		String password = "YOUR_SQL_PASWORD";
-
-		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url, user, password);
-			Statement statement = conn.createStatement();
-
-			String sql1 = "DELETE FROM Invoice";
-			String sql2 = "DELETE FROM Product";
-			 
-			statement.executeQuery(sql1); 
-			statement.executeQuery(sql2); 
- 			conn.close();
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
+	public static void removeAllProducts() {}
 
 	/**
 	 * Removes a particular product record from the database corresponding to the
 	 * provided <code>productCode</code>
 	 * @param assetCode
 	 */
-	public static void removeProduct(String productCode) {
-		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
-		String user = "YOUR_LOGIN";
-		String password = "YOUR_SQL_PASWORD";
-
-		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url, user, password);
-			Statement statement = conn.createStatement();
-
-			String sql1 = "DELETE FROM Invoice WHERE productCode='"+productCode+"'";
-			String sql2 = "DELETE FROM Product WHERE productCode='"+productCode+"'";
-			 
-			statement.executeQuery(sql1); 
-			statement.executeQuery(sql2); 
-			conn.close();
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
+	public static void removeProduct(String productCode) {}
 
 	/**
 	 * Adds an equipment record to the database with the
@@ -212,55 +145,14 @@ public class InvoiceData {
 	/**
 	 * Removes all invoice records from the database
 	 */
-	public static void removeAllInvoices() {
-		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
-		String user = "YOUR_LOGIN";
-		String password = "YOUR_SQL_PASWORD";
-
-		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url, user, password);
-			Statement statement = conn.createStatement();
-
-			String sql1 = "DELETE FROM Invoice";
-			 
-			statement.executeQuery(sql1); 
-
-			conn.close();
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
+	public static void removeAllInvoices() {}
 	
 	/**
 	 * Removes the invoice record from the database corresponding to the
 	 * provided <code>invoiceCode</code>
 	 * @param invoiceCode
 	 */
-	public static void removeInvoice(String invoiceCode) {
-		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
-		String user = "YOUR_LOGIN";
-		String password = "YOUR_SQL_PASWORD";
-
-		try {
-			Class.forName(driver);
-			Connection conn = DriverManager.getConnection(url, user, password);
-			Statement statement = conn.createStatement();
-
-			String sql1 = "DELETE FROM Invoice WHERE invoiceCode='"+invoiceCode+"'";
-			 
-			statement.executeQuery(sql1); 
-			conn.close();
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
+	public static void removeInvoice(String invoiceCode) {}
 	
 	/**
 	 * Adds an invoice record to the database with the given data.  
