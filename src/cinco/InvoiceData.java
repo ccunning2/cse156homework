@@ -7,7 +7,7 @@ import java.sql.*;
  * interacting with the database supporting this application.
  *
  */
-public class InvoiceData2 {
+public class InvoiceData {
 
 	/**
 	 * Method that removes every person record from the database
@@ -67,17 +67,19 @@ public class InvoiceData2 {
 				checkAddress.close();
 				
 				//Finally time to add the person
-				PreparedStatement addperson = cunning.prepareStatement("INSERT INTO Persons(PersonCode, AddressID, FirstName, LastName) VALUES (?,?,?,?)");
+
+				PreparedStatement addperson = cunning.prepareStatement("INSERT INTO Person(PersonCode, AddressID, FirstName, LastName) VALUES (?,?,?,?)");
 				addperson.setString(1, personCode);
 				addperson.setInt(2, AddressID);
 				addperson.setString(3, firstName);
 				addperson.setString(4, lastName);
 				
-				addperson.execute();
+				addperson.executeUpdate();
 				
 			}
 		checkPerson.close();
 		checkedPerson.close();	
+		cunning.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,7 +102,36 @@ public class InvoiceData2 {
 	 * Method to add an address to the database
 	 */
 	public static int addAddress(String street, String city, String state, String zip, String country) {
-		//TODO Add this method, also have return AddressID
+		Connection addressConnection = sqlConnection.getConnection();
+		int AddressID = 0;
+		try {
+			PreparedStatement addressAdder = addressConnection.prepareStatement("INSERT INTO Address(Street, City, State, Zip, Country) VALUES (?,?,?,?,?)");
+			addressAdder.setString(1, street);
+			addressAdder.setString(2, city);
+			addressAdder.setString(3, state);
+			addressAdder.setString(4, zip);
+			addressAdder.setString(5, country);
+			
+			addressAdder.executeUpdate();
+			
+			addressAdder = addressConnection.prepareStatement("SELECT LAST_INSERT_ID()");
+			
+			
+			//Get new addressID and return
+			ResultSet newAddressID = addressAdder.executeQuery();
+			newAddressID.next();
+			AddressID = newAddressID.getInt("LAST_INSERT_ID()");
+			newAddressID.close();
+			addressAdder.close();
+			addressConnection.close();
+			return AddressID;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//TODO Add precautionary closes
+		}
+		return AddressID;
 	}
 	/**
 	 * Method that removes every customer record from the database
