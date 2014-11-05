@@ -138,7 +138,29 @@ public class InvoiceData {
 	/**
 	 * Removes all product records from the database
 	 */
-	public static void removeAllProducts() {}
+	public static void removeAllProducts() {
+		
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
+		String user = "YOUR_LOGIN";
+		String password = "YOUR_SQL_PASWORD";
+
+		try {
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, user, password);
+			Statement statement = conn.createStatement();
+
+			String sql2 = "DELETE FROM Invoice";
+			String sql3 = "DELETE FROM Product";
+			 
+			statement.executeQuery(sql2); 
+			statement.executeQuery(sql3); 
+ 			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Removes a particular product record from the database corresponding to the
