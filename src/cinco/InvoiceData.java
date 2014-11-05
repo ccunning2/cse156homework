@@ -167,7 +167,29 @@ public class InvoiceData {
 	 * provided <code>productCode</code>
 	 * @param assetCode
 	 */
-	public static void removeProduct(String productCode) {}
+	public static void removeProduct(String productCode) {
+		
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
+		String user = "YOUR_LOGIN";
+		String password = "YOUR_SQL_PASWORD";
+
+		try {
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, user, password);
+			Statement statement = conn.createStatement();
+
+			String sql1 = "DELETE FROM Invoice WHERE productCode='"+productCode+"'";
+			String sql2 = "DELETE FROM Product WHERE productCode='"+productCode+"'";
+			 
+			statement.executeQuery(sql1); 
+			statement.executeQuery(sql2); 
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Adds an equipment record to the database with the
