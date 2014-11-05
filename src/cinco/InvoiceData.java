@@ -32,9 +32,9 @@ public class InvoiceData {
 			Connection conn = DriverManager.getConnection(url, user, password);
 			Statement statement = conn.createStatement();
 
-			String sql1 = "DELETE FROM `email`";
-			String sql2 = "DELETE FROM `invoice`";
-			String sql3 = "DELETE FROM `person`";
+			String sql1 = "DELETE FROM Emails";
+			String sql2 = "DELETE FROM Invoice";
+			String sql3 = "DELETE FROM Person";
 			
 			statement.executeQuery(sql1);  
 			statement.executeQuery(sql2); 
@@ -52,7 +52,31 @@ public class InvoiceData {
 	 * provided <code>personCode</code>
 	 * @param personCode
 	 */
-	public static void removePerson(String personCode) {}
+	public static void removePerson(String personCode) {
+		
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://cse.unl.edu/YOUR_LOGIN";
+		String user = "YOUR_LOGIN";
+		String password = "YOUR_SQL_PASWORD";
+
+		try {
+			Class.forName(driver);
+			Connection conn = DriverManager.getConnection(url, user, password);
+			Statement statement = conn.createStatement();
+
+			String sql1 = "DELETE FROM Email WHERE personCode='"+personCode+"'";
+			String sql2 = "DELETE FROM Invoice WHERE personCode='"+personCode+"'";
+			String sql3 = "DELETE FROM Person WHERE personCode='"+personCode+"'";
+			
+			statement.executeQuery(sql1);  
+			statement.executeQuery(sql2); 
+			statement.executeQuery(sql3); 
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	
 	/**
 	 * Method to add a person record to the database with the provided data. 
