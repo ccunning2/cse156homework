@@ -2,6 +2,10 @@ package cinco;
 
 import java.sql.*;
 
+import org.joda.time.*;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 /**
  * This is a collection of utility methods that define a general API for
  * interacting with the database supporting this application.
@@ -433,21 +437,86 @@ public class InvoiceData {
 	/**
 	 * Adds an invoice record to the database with the given data.  
 	 */
-	public static void addInvoice(String invoiceCode, String customerCode, String salesPersonCode) {}
+	public static void addInvoice(String invoiceCode, String customerCode, String salesPersonCode) {
+		Connection invoiceConn = sqlConnection.getConnection();
+		
+		try {
+			PreparedStatement invoiceAdder = invoiceConn.prepareStatement("INSERT INTO Invoice(invoiceCode, salesPerson,custCode) VALUES(?,?,?)");
+			invoiceAdder.setString(1, invoiceCode);
+			invoiceAdder.setString(2, salesPersonCode);
+			invoiceAdder.setString(3, customerCode);
+			
+			invoiceAdder.executeUpdate();
+			
+			invoiceAdder.close();
+			invoiceConn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	/**
 	 * Adds a particular equipment (corresponding to <code>productCode</code> to an 
 	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
 	 * number of units
 	 */
-	public static void addEquipmentToInvoice(String invoiceCode, String productCode, int numUnits) {}
+	public static void addEquipmentToInvoice(String invoiceCode, String productCode, int numUnits) {
+		//Each of the next three methods does exactly the same thing- updates an invoice with this information.
+		//Will need to do some data manipulation for each though. Our quantity field in the database is a double, for instance
+		double quantity = (double) numUnits;
+		Connection invoiceConn = sqlConnection.getConnection();
+		
+		
+		try {
+			PreparedStatement invoiceUpdater = invoiceConn.prepareStatement("UPDATE Invoice SET productCode=?, quantity=? WHERE invoiceCode=?");
+			invoiceUpdater.setString(1, productCode);
+			invoiceUpdater.setDouble(2, quantity);
+			invoiceUpdater.setString(3, invoiceCode);
+			
+			invoiceUpdater.close();
+			invoiceConn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	/**
 	 * Adds a particular equipment (corresponding to <code>productCode</code> to an 
 	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
 	 * begin/end dates
 	 */
-	public static void addLicenseToInvoice(String invoiceCode, String productCode, String startDate, String endDate) {}
+	public static void addLicenseToInvoice(String invoiceCode, String productCode, String startDate, String endDate) {
+		//Need to convert start date and end date to a quantity for our invoice object
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
+		Connection invoiceConn = sqlConnection.getConnection();
+		
+		DateTime begin = new DateTime(DateTime.parse(startDate, fmt));
+		DateTime finish = new DateTime(DateTime.parse(endDate, fmt));
+		double period = Days.daysBetween(begin, finish).getDays(); //Number of days for quantity
+		
+		
+		try {
+			PreparedStatement invoiceUpdater = invoiceConn.prepareStatement("UPDATE Invoice SET productCode=?, quantity=? WHERE invoiceCode=?");
+			invoiceUpdater.setString(1, productCode);
+			invoiceUpdater.setDouble(2, period);
+			invoiceUpdater.setString(3, invoiceCode);
+			
+			invoiceUpdater.close();
+			invoiceConn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
 
 	/**
 	 * Adds a particular equipment (corresponding to <code>productCode</code> to an 
