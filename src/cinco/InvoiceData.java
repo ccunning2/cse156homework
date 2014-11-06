@@ -16,7 +16,7 @@ public class InvoiceData {
 	/**
 	 * Method that removes every person record from the database
 	 */
-	public static void removeAllPersons() {
+	public static void removeAllPersons()  {
 		
 		Connection conn = sqlConnection.getConnection();
 
@@ -29,13 +29,12 @@ public class InvoiceData {
 			sql1.executeUpdate();  
 			sql2.executeUpdate(); 
 			sql3.executeUpdate(); 
-			conn.close();
+			
 			sql1.close();
 			sql2.close();
 			sql3.close();
+			conn.close();
 			
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -52,17 +51,21 @@ public class InvoiceData {
 
 		try {
 
-			Statement statement = conn.createStatement();
-
-			String sql1 = "DELETE FROM Email WHERE personCode='"+personCode+"'";
-			String sql2 = "DELETE FROM Invoice WHERE personCode='"+personCode+"'";
-			String sql3 = "DELETE FROM Person WHERE personCode='"+personCode+"'";
+			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Email WHERE personCode= ?");
+			sql1.setString(1, personCode);
+			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Invoice WHERE personCode= ?");
+			sql2.setString(1, personCode);
+			PreparedStatement sql3 = conn.prepareStatement("DELETE FROM Person WHERE personCode= ?");
+			sql3.setString(1, personCode);
 			
-			statement.executeUpdate(sql1);  
-			statement.executeUpdate(sql2); 
-			statement.executeUpdate(sql3); 
+			sql1.executeUpdate();  
+			sql2.executeUpdate(); 
+			sql3.executeUpdate(); 
+			
+			sql1.close();
+			sql2.close();
+			sql3.close();
 			conn.close();
-			statement.close();
 			
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -200,17 +203,14 @@ public class InvoiceData {
 
 		try {
 
-			Statement statement = conn.createStatement();
 
-
-			String sql2 = "DELETE FROM Invoice";
-			String sql3 = "DELETE FROM Customer";
-			 
-
-			statement.executeUpdate(sql2); 
-			statement.executeUpdate(sql3); 
+			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Invoice");
+			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Customer");
+			sql1.executeUpdate(); 
+			sql2.executeUpdate(); 
+			sql1.close();
+			sql2.close();
 			conn.close();
-			statement.close();
 			
 		
 		}catch(SQLException e){
@@ -275,15 +275,15 @@ public class InvoiceData {
 
 		try {
 
-			Statement statement = conn.createStatement();
-
-			String sql2 = "DELETE FROM Invoice";
-			String sql3 = "DELETE FROM Product";
+			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Invoice");
+			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Product");
 			 
-			statement.executeUpdate(sql2); 
-			statement.executeUpdate(sql3); 
+			sql1.executeUpdate(); 
+			sql2.executeUpdate(); 
+			sql1.close();
+			sql2.close();
  			conn.close();
- 			statement.close();
+ 			
 			
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -301,15 +301,18 @@ public class InvoiceData {
 		Connection conn = sqlConnection.getConnection();
 
 		try {
-			Statement statement = conn.createStatement();
 
-			String sql1 = "DELETE FROM Invoice WHERE productCode='"+productCode+"'";
-			String sql2 = "DELETE FROM Product WHERE productCode='"+productCode+"'";
+			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Invoice WHERE productCode=?");
+			sql1.setString(1,productCode);
+			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Product WHERE productCode=?");
+			sql2.setString(1,productCode);
 			 
-			statement.executeUpdate(sql1); 
-			statement.executeUpdate(sql2); 
+			sql1.executeUpdate(); 
+			sql2.executeUpdate(); 
+			sql1.close();
+			sql2.close();
 			conn.close();
-			statement.close();
+			
 			
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -405,17 +408,16 @@ public class InvoiceData {
 
 		try {
 
-			Statement statement = conn.createStatement();
-
-			String sql1 = "DELETE FROM Invoice";
-			 
-			statement.executeUpdate(sql1); 
-
-			conn.close();
-			statement.close();
 			
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
+			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Invoice");
+			
+			 
+			sql1.executeUpdate(); 
+
+			
+			sql1.close();
+			conn.close();
+			
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -432,14 +434,15 @@ public class InvoiceData {
 
 		try {
 
-			Statement statement = conn.createStatement();
+			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Invoice WHERE invoiceCode=?");
+			sql1.setString(1, invoiceCode);
 
-			String sql1 = "DELETE FROM Invoice WHERE invoiceCode='"+invoiceCode+"'";
+
 			 
-			statement.executeUpdate(sql1); 
-			
+			sql1.executeUpdate(); 
+			sql1.close();
 			conn.close();
-			statement.close();
+			
 			
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -545,11 +548,10 @@ public class InvoiceData {
 			
 			pstmt.executeUpdate();
 			
-			conn.close();
 			pstmt.close();
+			conn.close();
 			
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
+			
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
