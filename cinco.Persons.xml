@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<cinco.Person>
+  <personCode>248k</personCode>
+  <firstName>Cameron</firstName>
+  <lastName>Cunning</lastName>
+  <address>
+    <Street>2240 Park Ave.</Street>
+    <City>Lincoln</City>
+    <State>NE</State>
+    <Zip>68502</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>ccunning@gmail.com</string>
+    <null/>
+  </emails>
+</cinco.Person>
+<cinco.Person>
+  <personCode>322b</personCode>
+  <firstName>Jimmy</firstName>
+  <lastName>Henderson</lastName>
+  <address>
+    <Street>123 Green Avenue</Street>
+    <City>Omaha</City>
+    <State>NE</State>
+    <Zip>68435</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>jhend@gmail.com</string>
+  </emails>
+</cinco.Person>
+<cinco.Person>
+  <personCode>348u</personCode>
+  <firstName>Red</firstName>
+  <lastName>Green</lastName>
+  <address>
+    <Street>2326 Yellow Street</Street>
+    <City>New York</City>
+    <State>NY</State>
+    <Zip>54321</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>rgb@hue.com</string>
+  </emails>
+</cinco.Person>
+<cinco.Person>
+  <personCode>675e</personCode>
+  <firstName>Ghandalf</firstName>
+  <lastName>Grey</lastName>
+  <address>
+    <Street>1144 Wizards Way</Street>
+    <State>Wanaka</State>
+    <Zip>5678</Zip>
+    <Country>NEW ZEALAND</Country>
+  </address>
+  <emails>
+    <string>ghanda@gmail.com</string>
+  </emails>
+</cinco.Person>
+<cinco.Person>
+  <personCode>922a</personCode>
+  <firstName>Rick</firstName>
+  <lastName>James</lastName>
+  <address>
+    <Street>1144 South Street</Street>
+    <City>Miami</City>
+    <State>FL</State>
+    <Zip>99564</Zip>
+    <Country>USA</Country>
+  </address>
+  <emails>
+    <string>rj34@hotmail.com</string>
+    <null/>
+  </emails>
+</cinco.Person>

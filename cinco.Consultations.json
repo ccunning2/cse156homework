@@ -1,0 +1,26 @@
+{"Consultation": {
+  "name": "Cellular Support",
+  "code": "782g",
+  "hourlyFee": 32.0
+}}
+{"License": {
+  "name": "Cinco Wifi Service",
+  "code": "90fa",
+  "annualLicenseFee": 15000.0,
+  "serviceFee": 1500.0
+}}
+{"Equipment": {
+  "name": "Cinco Screwdriver",
+  "code": "b29e",
+  "pricePerUnit": 2.0
+}}
+{"Equipment": {
+  "name": "Cinco Corkscrew",
+  "code": "ff23",
+  "pricePerUnit": 12.99
+}}
+{"Equipment": {
+  "name": "Frisbee",
+  "code": "fp12",
+  "pricePerUnit": 2.5
+}}

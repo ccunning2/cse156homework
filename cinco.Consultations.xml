@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<cinco.Consultation>
+  <name>Cellular Support</name>
+  <code>782g</code>
+  <hourlyFee>32.0</hourlyFee>
+</cinco.Consultation>
+<cinco.License>
+  <name>Cinco Wifi Service</name>
+  <code>90fa</code>
+  <annualLicenseFee>15000.0</annualLicenseFee>
+  <serviceFee>1500.0</serviceFee>
+</cinco.License>
+<cinco.Equipment>
+  <name>Cinco Screwdriver</name>
+  <code>b29e</code>
+  <pricePerUnit>2.0</pricePerUnit>
+</cinco.Equipment>
+<cinco.Equipment>
+  <name>Cinco Corkscrew</name>
+  <code>ff23</code>
+  <pricePerUnit>12.99</pricePerUnit>
+</cinco.Equipment>
+<cinco.Equipment>
+  <name>Frisbee</name>
+  <code>fp12</code>
+  <pricePerUnit>2.5</pricePerUnit>
+</cinco.Equipment>

@@ -1,5 +1,7 @@
 package cinco;
 import java.sql.*;
+
+import com.cinco.InvoiceData;
 //This is just a class to test the sql connection
 public class sqlTester {
 

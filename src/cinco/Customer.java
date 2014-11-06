@@ -17,6 +17,14 @@ public class Customer {
 		
 	}
 	
+	public Customer(String custCode, String type, String name, Address address, Person primaryContact){
+		this.customerCode = custCode;
+		this.type = type;
+		this.name = name;
+		this.address = address;
+		this.primaryContact = primaryContact;
+	}
+	
 	public void setPrimaryContact(Person primaryContact){
 		this.primaryContact = primaryContact;
 	}

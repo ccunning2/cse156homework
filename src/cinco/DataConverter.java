@@ -23,8 +23,7 @@ public class DataConverter {
 		String LastName = null;
 		String[] emails = null;
 
-		//Scanner	s = new Scanner(new FileReader("data/ourpersons.dat"));
-		//int count = s.nextInt(); //Number of entries. 
+		
 		Person[] persons = null;
 		try {
 			Connection personGetter = sqlConnection.getConnection();
@@ -67,82 +66,108 @@ public class DataConverter {
 		
 	}
 	//Changed following method to take Persons database as input argument, to be used in instantiating primary contact person
-	public static Customer[] readCustomers(Person[] persons) {  //Will read data from file and output to array. 
+	public static Customer[] readCustomers(Person[] persons) {  //Will read data from database and output to array. 
+		
+		Connection customerGetter = sqlConnection.getConnection();
+		
+		ResultSet dbCustomers = sqlConnection.getCustomers(customerGetter);
+		
 		try {
-		Scanner	s = new Scanner(new FileReader("data/ourCustomers.dat"));
-		
-		int count = s.nextInt(); //Number of entries. 
-		Customer[] customers = new Customer[count]; //Array to hold persons
-		s.nextLine(); //Advance scanner to next line
-		int iterator = 0; //Used to iterate in array creation
-		while (s.hasNext()) {
-			String inLine = s.nextLine(); //Make a string out of the next line
-			String [] info;
-			info = inLine.split(";"); //Makes an array of of the string, delimited by ';'
-		
+			dbCustomers.last();
+			int count = dbCustomers.getRow(); //This should effectively be the number of persons in the DB
+			dbCustomers.beforeFirst();
 			
-			Address address = new Address(info[4]);
-			customers[iterator] = new Customer(info[0], info[1], info[3], address);
 			
-			for (Person p : persons) {
-				if (p.getPersonCode().equalsIgnoreCase(info[2])) {
-					customers[iterator].setPrimaryContact(p);
-				}
+			Customer[] customers = new Customer[count]; //Array to hold persons
+			int iterator = 0; //Used to iterate in array creation
+			while (dbCustomers.next()) {
+				
+				int addressID = dbCustomers.getInt("AddressID");
+				Address address = sqlConnection.getAddress(addressID);
+				String personCode = dbCustomers.getString("priContact");
+				Person priContact = sqlConnection.getPerson(customerGetter, personCode);
+				String type = dbCustomers.getString("custType");
+				String name = dbCustomers.getString("custName");
+				String code = dbCustomers.getString("custCode");
+				
+				
+				customers[iterator] = new Customer(code,type,name,address,priContact);
+				
+				
+				iterator++;
 			}
-			
-			
-			
-			iterator++;
+			dbCustomers.close();
+			customerGetter.close();
+			return customers;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		s.close();
-		return customers;
 
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found in readCustomers()");
-		}
 		return null;
 		
 		
 	}
 	
 	public static Product[] readProducts(Person[] persons){
-		try {
-			Scanner	s = new Scanner(new FileReader("data/ourProducts.dat"));
 			
-			int count = s.nextInt(); //Number of entries. 
-			Product[] products = new Product[count]; //Array to hold products
-			s.nextLine(); //Advance scanner to next line
-			int iterator = 0; //Used to iterate in array creation
-			while (s.hasNext()) {
-				String inLine = s.nextLine(); //Make a string out of the next line
-				String [] info;
-				info = inLine.split(";"); //Makes an array of of the string, delimited by ';'
-				if (info[1].equalsIgnoreCase("E")){
-					products[iterator] = new Equipment(info[0], info[2], Double.parseDouble(info[3]));
-				} else if (info[1].equalsIgnoreCase("L")) {
-					products[iterator] = new License(info[0], info[2],Double.parseDouble(info[4]), Double.parseDouble(info[3]));
-				} else if (info[1].equalsIgnoreCase("C")) {
-					products[iterator] = new Consultation(info[0], info[2], Double.parseDouble(info[4]) );
-					for (Person p : persons) {
-						if (p.getPersonCode().equalsIgnoreCase(info[3])) {
-							//Test creating new reference variable
-							Consultation consultation = (Consultation) products[iterator];
-							consultation.setConsultant(p);
-						}
+		Connection productConn = sqlConnection.getConnection();
+		
+		ResultSet dbProducts = sqlConnection.getProducts(productConn);
+			double pricePerUnit;
+			String code;
+			String name;
+			Person consultant;
+			double hourlyfee;
+			double servicefee;
+			double annualfee;
+			String prodType;
+			int count = 0; //Number of entries.
+			
+			Product[] products;
+			try {
+				dbProducts.last();
+				count = dbProducts.getRow(); //This should effectively be the number of products in the DB
+				dbProducts.beforeFirst(); //Return to start of resultset
+				products = new Product[count];
+				
+				
+				int iterator = 0; //Used to iterate in array creation
+				while (dbProducts.next()) {
+					code = dbProducts.getString("productCode");
+					name = dbProducts.getString("prodName");
+					prodType = dbProducts.getString("prodType");
+					
+					
+					
+					
+					if (prodType.equalsIgnoreCase("E")) {  //If pricePerUnit is not equal to zero, then we have prodtype Equipment
+						pricePerUnit = dbProducts.getDouble("pricePerUnit");
+						products[iterator] = new Equipment(code,name,pricePerUnit);
+					} else if (prodType.equalsIgnoreCase("C")) {
+						hourlyfee = dbProducts.getDouble("hourlyFee");
+						consultant = sqlConnection.getPerson(productConn, dbProducts.getString("Consultant"));
+						products[iterator] = new Consultation(code,name,hourlyfee);
+					} else if (prodType.equalsIgnoreCase("L")) {
+						servicefee = dbProducts.getDouble("serviceFee");
+						annualfee = dbProducts.getDouble("annualFee");
+						products[iterator] = new License(code,name,annualfee,servicefee);
 					}
 					
-				} else {
-					products[iterator] = new Product();
-				}
-			
-				iterator++;
-			} //End while
-			s.close();
-			return products;
-
-			} catch (FileNotFoundException e) {
-				System.out.println("File not found exception in readProducts");
+		
+				
+					iterator++;
+				} //End while
+				dbProducts.close();
+				productConn.close();
+				return products;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			
+			
+
 			return null;
 	}
 	public static void writeXML(Object[] objects) {
@@ -220,71 +245,63 @@ public class DataConverter {
 	}
 	
 	public static Invoice[] readInvoice(Person[] persons, Customer[] customers, Product[] products) {
-		try {
-			Scanner	s = new Scanner(new FileReader("data/ourInvoices.dat"));
-			int count = s.nextInt(); //Number of entries. 
-			Invoice[] invoices = new Invoice[count]; //Array to hold invoices
-			int iterator = 0;
-			s.nextLine(); //Advance scanner to nextline
-			while (s.hasNext()) {
-				String inLine = s.nextLine(); //Make a string out of the next line
-				String[] info;
-				String[] invProducts; //Use this to handle product situation
-				info = inLine.split(";"); //Create array of strings from each line, ; delimited
-				//First, instantiate new invoice object
-				invoices[iterator] = new Invoice(info[0]);
-				for (Customer c : customers) {
-					if (c.getCustomerCode().equalsIgnoreCase(info[1])) {
-						invoices[iterator].setCustomer(c);
-					}
-				} //End customers for each
-				for (Person p: persons) {
-					if (p.getPersonCode().equals(info[2])) {
-						invoices[iterator].setSalesPerson(p);
-					}
-				} // End persons for each
+		
+			try {
+				Connection invoiceConn = sqlConnection.getConnection();
 				
+				ResultSet dbInvoice = sqlConnection.getInvoice(invoiceConn);
 				
-				//This is a String array of product information
-				invProducts = info[3].split(",");
-				for (String x: invProducts) {
-					int index = x.indexOf(":"); //Get index of occurence of ":"
-					String code = x.substring(0, index); //This is the product code
-					for (Product p : products) { //Iterate over each product in product array
-						if (p.getCode().equals(code)) {
-							if (p.getClass().getSimpleName().equals("Equipment")){
-								invoices[iterator].addProduct(p, Integer.parseInt(x.substring(index+1))); 
-							} else if (p.getClass().getSimpleName().equals("Consultation")) {
-								invoices[iterator].addProduct(p, Integer.parseInt(x.substring(index+1)));
-							} else if (p.getClass().getSimpleName().equals("License")) {
-								//First we need to get the number of days
-								int index2; //PLacekeeper for substring formation
-								DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-								
-								index2 = x.indexOf(":", index+1); //Move index to next ":"
-								
-								String start = x.substring(index+1,index2); 
-								String end = x.substring(index2+1);
-							
-								
-								DateTime begin = new DateTime(DateTime.parse(start, fmt));
-								DateTime finish = new DateTime(DateTime.parse(end, fmt));
-								int period = Days.daysBetween(begin, finish).getDays();
-								invoices[iterator].addProduct(p, period);
-							}
+				int count = sqlConnection.getInvoiceCount(invoiceConn);
+				Invoice[] invoices = new Invoice[count]; //Array to hold invoices
+				int iterator = -1;
+				String lastInvoice = null; //Need to keep track of current invoice
+				while (dbInvoice.next()) {
+					
+					
+					String invcode = dbInvoice.getString("invoiceCode");
+					String custCode = dbInvoice.getString("custCode");
+					String salesPerson = dbInvoice.getString("salesPerson");
+					
+					
+					if (!invcode.equalsIgnoreCase(lastInvoice)){ 
+						iterator++;
+					//First, instantiate new invoice object
+					invoices[iterator] = new Invoice(invcode);
+					
+					for (Customer c : customers) {
+						if (c.getCustomerCode().equalsIgnoreCase(custCode)) { //Already have customers in our array, might as well use them
+							invoices[iterator].setCustomer(c);
 						}
-					}//End for each product loop
-				} //End for stringx:invProducts 
+					} //End customers for each
+					for (Person p: persons) {
+						if (p.getPersonCode().equals(salesPerson)) {
+							invoices[iterator].setSalesPerson(p);
+						}
+					} // End persons for each
+					
+					} //End if invoicecode
+					lastInvoice = invcode;
+					
+					String prodCode = dbInvoice.getString("productCode");
+					double quantity = dbInvoice.getDouble("quantity");
+					
+					//Now add products to the invoice
+					
+					for (Product p : products) { //iterate over eaxh prod in prod array
+						if (p.getCode().equalsIgnoreCase(prodCode)) {
+							invoices[iterator].addProduct(p, (int) quantity);
+						}
+					}
 				
-				iterator++;
-			} //End while
-			s.close();
-			return invoices;
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+					
+				} //End while
+				
+				return invoices;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return null;
 		
 	}
 	

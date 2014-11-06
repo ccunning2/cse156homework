@@ -1,0 +1,76 @@
+{"Person": {
+  "personCode": "248k",
+  "firstName": "Cameron",
+  "lastName": "Cunning",
+  "address": {
+    "Street": "2240 Park Ave.",
+    "City": "Lincoln",
+    "State": "NE",
+    "Zip": "68502",
+    "Country": "USA"
+  },
+  "emails": [
+    "ccunning@gmail.com",
+    null
+  ]
+}}
+{"Person": {
+  "personCode": "322b",
+  "firstName": "Jimmy",
+  "lastName": "Henderson",
+  "address": {
+    "Street": "123 Green Avenue",
+    "City": "Omaha",
+    "State": "NE",
+    "Zip": "68435",
+    "Country": "USA"
+  },
+  "emails": [
+    "jhend@gmail.com"
+  ]
+}}
+{"Person": {
+  "personCode": "348u",
+  "firstName": "Red",
+  "lastName": "Green",
+  "address": {
+    "Street": "2326 Yellow Street",
+    "City": "New York",
+    "State": "NY",
+    "Zip": "54321",
+    "Country": "USA"
+  },
+  "emails": [
+    "rgb@hue.com"
+  ]
+}}
+{"Person": {
+  "personCode": "675e",
+  "firstName": "Ghandalf",
+  "lastName": "Grey",
+  "address": {
+    "Street": "1144 Wizards Way",
+    "State": "Wanaka",
+    "Zip": "5678",
+    "Country": "NEW ZEALAND"
+  },
+  "emails": [
+    "ghanda@gmail.com"
+  ]
+}}
+{"Person": {
+  "personCode": "922a",
+  "firstName": "Rick",
+  "lastName": "James",
+  "address": {
+    "Street": "1144 South Street",
+    "City": "Miami",
+    "State": "FL",
+    "Zip": "99564",
+    "Country": "USA"
+  },
+  "emails": [
+    "rj34@hotmail.com",
+    null
+  ]
+}}

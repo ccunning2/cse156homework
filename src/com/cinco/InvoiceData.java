@@ -1,10 +1,12 @@
-package cinco;
+package com.cinco;
 
 import java.sql.*;
 
 import org.joda.time.*;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
+import cinco.sqlConnection;
 
 /**
  * This is a collection of utility methods that define a general API for
