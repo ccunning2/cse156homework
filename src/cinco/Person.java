@@ -16,6 +16,17 @@ public class Person {
 		this.emails = email.split(",");
 		
 	}
+	
+	
+	//Modified above method to take String[] as argument--Useful for reading the database
+	public Person(String personCode, String first, String last, Address address, String[] email) {
+		this.personCode = personCode;
+		this.lastName = last;
+		this.firstName = first;
+		this.address = address;
+		this.emails = email;
+		
+	}
 
 	public String getPersonCode() {
 		return personCode;

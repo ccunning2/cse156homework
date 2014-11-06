@@ -1,5 +1,6 @@
 package cinco;
 import java.io.*;
+import java.sql.*;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -10,43 +11,58 @@ import org.joda.time.format.DateTimeFormatter;
 
 import com.thoughtworks.xstream.*;  
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
-//This will read .dat files, parse, create objects, and convert to XML/JSON
+//This will read .dat files, parse, create objects, and convert to XML/JSON OLD
+
+//Will now read from database and create the objects.
 public class DataConverter {
 
-	//Reads the Persons.dat file
+	//Reads the Person database
 	public static Person[] readPersons() {
-		
+		String personCode = null;
+		String FirstName = null;
+		String LastName = null;
+		String[] emails = null;
+
+		//Scanner	s = new Scanner(new FileReader("data/ourpersons.dat"));
+		//int count = s.nextInt(); //Number of entries. 
+		Person[] persons = null;
 		try {
-		Scanner	s = new Scanner(new FileReader("data/ourpersons.dat"));
-		
-		int count = s.nextInt(); //Number of entries. 
-		Person[] persons = new Person[count]; //Array to hold persons
-		s.nextLine(); //Advance scanner to next line
-		int iterator = 0; //Used to iterate in array creation
-		while (s.hasNext()) {
-			String inLine = s.nextLine(); //Make a string out of the next line
-			String [] info;
-			String emails; //Necessary in case of no emails
-			info = inLine.split(";"); //Makes an array of of the string, delimited by ';'
-			if (info.length < 4) { 
-				emails = "No Email";
-			} else {
-				emails = info[3];
+			Connection personGetter = sqlConnection.getConnection();
+			
+			ResultSet dbPersons = sqlConnection.getPersons(personGetter);
+			
+			//Would like to re-use as much code as possible, so in keeping with the orignal method we will determine
+			//the number of persons we have (or try to)
+			
+			dbPersons.last();
+			int count = dbPersons.getRow(); //This should effectively be the number of persons in the DB
+			dbPersons.beforeFirst(); //Return to start of resultset
+			
+			persons = new Person[count];
+
+			int iterator = 0; //Used to iterate in array creation
+			while (dbPersons.next()) {
+				
+				int addressID = dbPersons.getInt("AddressID");
+				Address address = sqlConnection.getAddress(addressID);
+				personCode = dbPersons.getString("PersonCode");
+				emails = sqlConnection.getEmails(personCode);
+				FirstName = dbPersons.getString("FirstName");
+				LastName = dbPersons.getString("LastName");
+				
+				persons[iterator] = new Person(personCode,FirstName,LastName, address, emails);
+				iterator++;
 			}
+			dbPersons.close();
+			personGetter.close();
 			
-			Address address = new Address(info[2]);
-			
-			persons[iterator] = new Person(info[0], info[1], address, emails);
-			iterator++;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		s.close();
+		
 		return persons;
 
-		
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found in readPersons()");
-		}
-		return null;
 		
 		
 	}
