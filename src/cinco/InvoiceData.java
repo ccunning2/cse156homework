@@ -64,8 +64,6 @@ public class InvoiceData {
 			conn.close();
 			statement.close();
 			
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -214,8 +212,7 @@ public class InvoiceData {
 			conn.close();
 			statement.close();
 			
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
+		
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -288,8 +285,6 @@ public class InvoiceData {
  			conn.close();
  			statement.close();
 			
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -316,8 +311,6 @@ public class InvoiceData {
 			conn.close();
 			statement.close();
 			
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -380,7 +373,28 @@ public class InvoiceData {
 	 * Adds an consultation record to the database with the
 	 * provided data.  
 	 */
-	public static void addConsultation(String productCode, String name, String consultantPersonCode, Double hourlyFee) {}
+	public static void addConsultation(String productCode, String name, String consultantPersonCode, Double hourlyFee) {
+		Connection consultationConn = sqlConnection.getConnection();
+		
+		try {
+			PreparedStatement consultationAdder = consultationConn.prepareStatement("INSERT INTO Products(productCode,prodName,Consultant,hourlyFee) VALUES(?,?,?,?)");
+			
+			consultationAdder.setString(1, productCode);
+			consultationAdder.setString(2, name);
+			consultationAdder.setString(3, consultantPersonCode);
+			consultationAdder.setDouble(4, hourlyFee);
+			
+			consultationAdder.executeUpdate();
+			
+			consultationAdder.close();
+			
+			consultationConn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	/**
 	 * Removes all invoice records from the database
@@ -427,8 +441,6 @@ public class InvoiceData {
 			conn.close();
 			statement.close();
 			
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -486,7 +498,7 @@ public class InvoiceData {
 	}
 	
 	/**
-	 * Adds a particular equipment (corresponding to <code>productCode</code> to an 
+	 * Adds a particular license (corresponding to <code>productCode</code> to an 
 	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
 	 * begin/end dates
 	 */
@@ -518,11 +530,7 @@ public class InvoiceData {
 		
 	}
 
-	/**
-	 * Adds a particular equipment (corresponding to <code>productCode</code> to an 
-	 * invoice corresponding to the provided <code>invoiceCode</code> with the given
-	 * number of billable hours.
-	 */
+	
 	public static void addConsultationToInvoice(String invoiceCode, String productCode, double numHours)  {
 		
 		Connection conn = sqlConnection.getConnection();
