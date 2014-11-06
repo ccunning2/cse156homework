@@ -36,5 +36,24 @@ public class sqlConnection {
 		return null;
 	}
 	
+	/***
+	 * Simple method to get a resultset containing all persons from the database.
+	 * @param conn
+	 * @return
+	 */
+	public ResultSet getPersons(Connection conn) {
+		String sql = "SELECT * FROM Person";
+		
+		try {
+			PreparedStatement personGetter = conn.prepareStatement(sql);
+			ResultSet persons = personGetter.executeQuery();
+			personGetter.close();
+			return persons;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }
