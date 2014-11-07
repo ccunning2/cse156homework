@@ -373,10 +373,11 @@ public class InvoiceData {
 		Connection equipConn = sqlConnection.getConnection();
 		try {
 			disableKeys(equipConn);
-			PreparedStatement equipAdder = equipConn.prepareStatement("INSERT INTO Products(productCode, prodName, pricePerUnit) VALUES (?,?,?)");
+			PreparedStatement equipAdder = equipConn.prepareStatement("INSERT INTO Products(productCode, prodName, pricePerUnit,prodType) VALUES (?,?,?,?)");
 			equipAdder.setString(1, productCode);
 			equipAdder.setString(2, name);
 			equipAdder.setDouble(3, pricePerUnit);
+			equipAdder.setString(4, "E");
 			
 			equipAdder.executeUpdate();
 			
@@ -400,11 +401,12 @@ public class InvoiceData {
 		Connection licenseConn = sqlConnection.getConnection();
 		try {
 			disableKeys(licenseConn);
-			PreparedStatement licenseAdder = licenseConn.prepareStatement("INSERT INTO Products(productCode, prodName, serviceFee, annualFee) VALUES (?,?,?,?)");
+			PreparedStatement licenseAdder = licenseConn.prepareStatement("INSERT INTO Products(productCode, prodName, serviceFee, annualFee,prodType) VALUES (?,?,?,?,?)");
 			licenseAdder.setString(1, productCode);
 			licenseAdder.setString(2, name);
 			licenseAdder.setDouble(3, serviceFee);
 			licenseAdder.setDouble(4, annualFee);
+			licenseAdder.setString(5, "L");
 
 			
 			licenseAdder.executeUpdate();
@@ -430,12 +432,13 @@ public class InvoiceData {
 		
 		try {
 			disableKeys(consultationConn);
-			PreparedStatement consultationAdder = consultationConn.prepareStatement("INSERT INTO Products(productCode,prodName,Consultant,hourlyFee) VALUES(?,?,?,?)");
+			PreparedStatement consultationAdder = consultationConn.prepareStatement("INSERT INTO Products(productCode,prodName,Consultant,hourlyFee, prodType) VALUES(?,?,?,?,?)");
 			
 			consultationAdder.setString(1, productCode);
 			consultationAdder.setString(2, name);
 			consultationAdder.setString(3, consultantPersonCode);
 			consultationAdder.setDouble(4, hourlyFee);
+			consultationAdder.setString(5, "C");
 			
 			consultationAdder.executeUpdate();
 			
