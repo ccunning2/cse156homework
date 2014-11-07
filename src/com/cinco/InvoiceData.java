@@ -3,6 +3,7 @@ package com.cinco;
 import java.sql.*;
 
 import org.joda.time.*;
+import org.joda.*;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -15,27 +16,63 @@ import cinco.sqlConnection;
  */
 public class InvoiceData {
 
+	public static void disableKeys(Connection conn){
+		try {
+			Statement disable = conn.prepareStatement("SET FOREIGN_KEY_CHECKS = 0");
+			disable.execute("SET FOREIGN_KEY_CHECKS = 0");
+			disable.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void enableKeys(Connection conn){
+		try {
+			Statement disable = conn.prepareStatement("SET FOREIGN_KEY_CHECKS = 1");
+			disable.execute("SET FOREIGN_KEY_CHECKS = 1");
+			disable.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 	/**
 	 * Method that removes every person record from the database
+	 *
 	 */
 	public static void removeAllPersons()  {
 		
 		Connection conn = sqlConnection.getConnection();
 
 		try {
+			disableKeys(conn);
+			Statement disable = conn.prepareStatement("SET FOREIGN_KEY_CHECKS = 0");
+			disable.execute("SET FOREIGN_KEY_CHECKS = 0");
 			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Emails");
 			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Invoice");
-			PreparedStatement sql3 = conn.prepareStatement("DELETE FROM Person");
+			PreparedStatement sql3 = conn.prepareStatement("DELETE FROM Products");
+			PreparedStatement sql4 = conn.prepareStatement("DELETE FROM Person");
 
 			
 			sql1.executeUpdate();  
 			sql2.executeUpdate(); 
 			sql3.executeUpdate(); 
+			sql4.executeUpdate(); 
 			
 			sql1.close();
 			sql2.close();
 			sql3.close();
+			sql4.close();
+			disable = conn.prepareStatement("SET FOREIGN_KEY_CHECKS = 0");
+			disable.execute("SET FOREIGN_KEY_CHECKS = 1");
+			disable.close();
+			enableKeys(conn);
 			conn.close();
+			
 			
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -52,12 +89,12 @@ public class InvoiceData {
 		Connection conn = sqlConnection.getConnection();
 
 		try {
-
-			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Email WHERE personCode= ?");
+			disableKeys(conn);
+			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Emails WHERE Person= ?");
 			sql1.setString(1, personCode);
-			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Invoice WHERE personCode= ?");
+			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Invoice WHERE salesPerson= ?");
 			sql2.setString(1, personCode);
-			PreparedStatement sql3 = conn.prepareStatement("DELETE FROM Person WHERE personCode= ?");
+			PreparedStatement sql3 = conn.prepareStatement("DELETE FROM Person WHERE PersonCode= ?");
 			sql3.setString(1, personCode);
 			
 			sql1.executeUpdate();  
@@ -67,6 +104,7 @@ public class InvoiceData {
 			sql1.close();
 			sql2.close();
 			sql3.close();
+			enableKeys(conn);
 			conn.close();
 			
 		}catch(SQLException e){
@@ -92,6 +130,7 @@ public class InvoiceData {
 		//Need to check if address exists, and if so, get addressID. Else- Create address and get addressID
 		//First check if person exists
 		try {
+			disableKeys(cunning);
 			PreparedStatement checkPerson = cunning.prepareStatement("SELECT * FROM Person WHERE PersonCode = ?");
 			checkPerson.setString(1, personCode);
 			ResultSet checkedPerson = checkPerson.executeQuery();
@@ -129,6 +168,7 @@ public class InvoiceData {
 			}
 		checkPerson.close();
 		checkedPerson.close();	
+		enableKeys(cunning);
 		cunning.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -205,13 +245,14 @@ public class InvoiceData {
 
 		try {
 
-
+			disableKeys(conn);
 			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Invoice");
 			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Customer");
 			sql1.executeUpdate(); 
 			sql2.executeUpdate(); 
 			sql1.close();
 			sql2.close();
+			enableKeys(conn);
 			conn.close();
 			
 		
@@ -229,6 +270,7 @@ public class InvoiceData {
 		//Need to check if address exists or not.. 
 		//TODO Make this a checkAddress method?
 		try {
+			disableKeys(customerAdder);
 			PreparedStatement checkAddress = customerAdder.prepareStatement("SELECT * FROM Address WHERE Street = ? AND City = ? AND State = ? AND Zip = ?");
 			checkAddress.setString(1, street);
 			checkAddress.setString(2, city);
@@ -256,6 +298,7 @@ public class InvoiceData {
 			customerAdd.executeUpdate();
 			
 			customerAdd.close();
+			enableKeys(customerAdder);
 			customerAdder.close();
 			
 		} catch (SQLException e) {
@@ -278,7 +321,7 @@ public class InvoiceData {
 		try {
 
 			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Invoice");
-			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Product");
+			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Products");
 			 
 			sql1.executeUpdate(); 
 			sql2.executeUpdate(); 
@@ -306,7 +349,7 @@ public class InvoiceData {
 
 			PreparedStatement sql1 = conn.prepareStatement("DELETE FROM Invoice WHERE productCode=?");
 			sql1.setString(1,productCode);
-			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Product WHERE productCode=?");
+			PreparedStatement sql2 = conn.prepareStatement("DELETE FROM Products WHERE productCode=?");
 			sql2.setString(1,productCode);
 			 
 			sql1.executeUpdate(); 
@@ -329,6 +372,7 @@ public class InvoiceData {
 		
 		Connection equipConn = sqlConnection.getConnection();
 		try {
+			disableKeys(equipConn);
 			PreparedStatement equipAdder = equipConn.prepareStatement("INSERT INTO Products(productCode, prodName, pricePerUnit) VALUES (?,?,?)");
 			equipAdder.setString(1, productCode);
 			equipAdder.setString(2, name);
@@ -338,6 +382,7 @@ public class InvoiceData {
 			
 			equipAdder.close();
 			
+			enableKeys(equipConn);
 			equipConn.close();
 			
 		} catch (SQLException e) {
@@ -354,6 +399,7 @@ public class InvoiceData {
 	public static void addLicense(String productCode, String name, double serviceFee, double annualFee) {
 		Connection licenseConn = sqlConnection.getConnection();
 		try {
+			disableKeys(licenseConn);
 			PreparedStatement licenseAdder = licenseConn.prepareStatement("INSERT INTO Products(productCode, prodName, serviceFee, annualFee) VALUES (?,?,?,?)");
 			licenseAdder.setString(1, productCode);
 			licenseAdder.setString(2, name);
@@ -365,6 +411,7 @@ public class InvoiceData {
 			
 			licenseAdder.close();
 			
+			enableKeys(licenseConn);
 			licenseConn.close();
 			
 		} catch (SQLException e) {
@@ -382,6 +429,7 @@ public class InvoiceData {
 		Connection consultationConn = sqlConnection.getConnection();
 		
 		try {
+			disableKeys(consultationConn);
 			PreparedStatement consultationAdder = consultationConn.prepareStatement("INSERT INTO Products(productCode,prodName,Consultant,hourlyFee) VALUES(?,?,?,?)");
 			
 			consultationAdder.setString(1, productCode);
@@ -392,7 +440,7 @@ public class InvoiceData {
 			consultationAdder.executeUpdate();
 			
 			consultationAdder.close();
-			
+			enableKeys(consultationConn);
 			consultationConn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -458,6 +506,7 @@ public class InvoiceData {
 		Connection invoiceConn = sqlConnection.getConnection();
 		
 		try {
+			disableKeys(invoiceConn);
 			PreparedStatement invoiceAdder = invoiceConn.prepareStatement("INSERT INTO Invoice(invoiceCode, salesPerson,custCode) VALUES(?,?,?)");
 			invoiceAdder.setString(1, invoiceCode);
 			invoiceAdder.setString(2, salesPersonCode);
@@ -466,6 +515,7 @@ public class InvoiceData {
 			invoiceAdder.executeUpdate();
 			
 			invoiceAdder.close();
+			enableKeys(invoiceConn);
 			invoiceConn.close();
 			
 		} catch (SQLException e) {
@@ -483,18 +533,45 @@ public class InvoiceData {
 	public static void addEquipmentToInvoice(String invoiceCode, String productCode, int numUnits) {
 		//Each of the next three methods does exactly the same thing- updates an invoice with this information.
 		//Will need to do some data manipulation for each though. Our quantity field in the database is a double, for instance
-		double quantity = (double) numUnits;
+		
 		Connection invoiceConn = sqlConnection.getConnection();
 		
 		
 		try {
-			PreparedStatement invoiceUpdater = invoiceConn.prepareStatement("UPDATE Invoice SET productCode=?, quantity=? WHERE invoiceCode=?");
-			invoiceUpdater.setString(1, productCode);
-			invoiceUpdater.setDouble(2, quantity);
-			invoiceUpdater.setString(3, invoiceCode);
+			disableKeys(invoiceConn);
+			//First need to check if invoice exists. If not, the following will work. If it does, need to update that row
+			PreparedStatement invoiceGetter = invoiceConn.prepareStatement("SELECT custCode,salesPerson FROM Invoice WHERE invoiceCode=?");
+			PreparedStatement invoiceChecker = invoiceConn.prepareStatement("SELECT productCode FROM Invoice WHERE invoiceCode=?");
+			invoiceChecker.setString(1, productCode);
 			
+			if(!invoiceChecker.execute()) {//False if empty 
+				PreparedStatement invoiceUpdater = invoiceConn.prepareStatement("UPDATE Invoice SET productCode=?,quantity=? WHERE invoiceCode=?");
+				invoiceUpdater.setString(1, productCode);
+				invoiceUpdater.setDouble(2, numUnits);
+				invoiceUpdater.setString(3, invoiceCode);
+				invoiceUpdater.executeUpdate();
+				invoiceUpdater.close();
+				enableKeys(invoiceConn);
+				invoiceConn.close();
+			} else {
+		
+			invoiceGetter.setString(1, invoiceCode);
+			ResultSet checkers = invoiceGetter.executeQuery();
+			checkers.next();
+			String custCode = checkers.getString("custCode");
+			String salesPerson = checkers.getString("salesPerson");
+			PreparedStatement invoiceUpdater = invoiceConn.prepareStatement("INSERT INTO Invoice (invoiceCode,salesPerson,custCode,productCode,quantity) VALUES (?,?,?,?,?)");
+			invoiceUpdater.setString(1, invoiceCode);
+			invoiceUpdater.setString(2, salesPerson);
+			invoiceUpdater.setString(3, custCode);
+			invoiceUpdater.setString(4,productCode);
+			invoiceUpdater.setDouble(5, numUnits);
+			invoiceUpdater.executeUpdate();
+			invoiceGetter.close();
 			invoiceUpdater.close();
-			invoiceConn.close();
+			checkers.close();
+			enableKeys(invoiceConn);
+			invoiceConn.close();}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -518,11 +595,33 @@ public class InvoiceData {
 		
 		
 		try {
-			PreparedStatement invoiceUpdater = invoiceConn.prepareStatement("UPDATE Invoice SET productCode=?, quantity=? WHERE invoiceCode=?");
-			invoiceUpdater.setString(1, productCode);
-			invoiceUpdater.setDouble(2, period);
-			invoiceUpdater.setString(3, invoiceCode);
-			
+			disableKeys(invoiceConn);
+			PreparedStatement invoiceChecker = invoiceConn.prepareStatement("SELECT productCode FROM Invoice WHERE invoiceCode=?");
+			PreparedStatement invoiceUpdater;
+			invoiceChecker.setString(1, invoiceCode);
+			if (!invoiceChecker.execute()) {//Update else insert
+				invoiceUpdater = invoiceConn.prepareStatement("UPDATE Invoice SET productCode=?, quantity=? WHERE invoiceCode=?");
+				invoiceUpdater.setString(1, productCode);
+				invoiceUpdater.setDouble(2, period);
+				invoiceUpdater.setString(3, invoiceCode);
+				invoiceUpdater.executeUpdate();
+				enableKeys(invoiceConn);
+				invoiceConn.close();
+			} else { //Insert into 
+				PreparedStatement invoiceQuery = invoiceConn.prepareStatement("SELECT custCode,salesPerson FROM Invoice WHERE invoiceCode=?");
+				invoiceQuery.setString(1, invoiceCode);
+				ResultSet invoiceResults = invoiceQuery.executeQuery();
+				invoiceResults.next();
+				String custCode = invoiceResults.getString("custCode");
+				String salesPerson = invoiceResults.getString("salesPerson");
+				invoiceUpdater = invoiceConn.prepareStatement("INSERT INTO Invoice (invoiceCode,salesPerson,custCode,productCode,quantity) VALUES (?,?,?,?,?)");
+				invoiceUpdater.setString(1, invoiceCode);
+				invoiceUpdater.setString(2, salesPerson);
+				invoiceUpdater.setString(3, custCode);
+				invoiceUpdater.setString(4, productCode);
+				invoiceUpdater.setDouble(5, period);
+				invoiceUpdater.executeUpdate();
+			} 
 			invoiceUpdater.close();
 			invoiceConn.close();
 		} catch (SQLException e) {
@@ -538,22 +637,42 @@ public class InvoiceData {
 	
 	public static void addConsultationToInvoice(String invoiceCode, String productCode, double numHours)  {
 		
-		Connection conn = sqlConnection.getConnection();
-
-
+		Connection invoiceConn = sqlConnection.getConnection();
+		
+		
 		try {
-
-			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Invoice(invoiceCode,productCode,quantity) VALUES(?,?,?)");
-			pstmt.setString(1,invoiceCode);
-			pstmt.setString(2,productCode);
-			pstmt.setDouble(3,numHours);
 			
-			pstmt.executeUpdate();
+			disableKeys(invoiceConn);
+			//First need to check if invoice exists. If not, the following will work. If it does, need to update that row
+			PreparedStatement invoiceGetter = invoiceConn.prepareStatement("SELECT custCode,salesPerson FROM Invoice WHERE invoiceCode=?");
+			PreparedStatement invoiceChecker = invoiceConn.prepareStatement("SELECT productCode FROM Invoice WHERE invoiceCode=?");
+			invoiceChecker.setString(1, productCode);
 			
-			pstmt.close();
-			conn.close();
-			
-			
+			if(!invoiceChecker.execute()) {//False if empty 
+				PreparedStatement invoiceUpdater = invoiceConn.prepareStatement("UPDATE Invoice SET productCode=?,quantity=? WHERE invoiceCode=?");
+				invoiceUpdater.setString(1, productCode);
+				invoiceUpdater.setDouble(2, numHours);
+				invoiceUpdater.setString(3, invoiceCode);
+				invoiceUpdater.executeUpdate();
+			} else {
+		
+			invoiceGetter.setString(1, invoiceCode);
+			ResultSet checkers = invoiceGetter.executeQuery();
+			checkers.next();
+			String custCode = checkers.getString("custCode");
+			String salesPerson = checkers.getString("salesPerson");
+			PreparedStatement invoiceUpdater = invoiceConn.prepareStatement("INSERT INTO Invoice (invoiceCode,salesPerson,custCode,productCode,quantity) VALUES (?,?,?,?,?)");
+			invoiceUpdater.setString(1, invoiceCode);
+			invoiceUpdater.setString(2, salesPerson);
+			invoiceUpdater.setString(3, custCode);
+			invoiceUpdater.setString(4,productCode);
+			invoiceUpdater.setDouble(5, numHours);
+			invoiceUpdater.executeUpdate();
+			invoiceGetter.close();
+			invoiceUpdater.close();
+			checkers.close();
+			enableKeys(invoiceConn);
+			invoiceConn.close(); }
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
