@@ -1,4 +1,4 @@
 cse156homework
 ==============
 
-Homework for 156
+Homework assignment for a Java course
